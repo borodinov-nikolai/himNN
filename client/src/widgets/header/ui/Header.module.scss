@@ -1,0 +1,114 @@
+@import "../../../shared/styles/mixins/breakpoints";
+.root {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: rgba(78, 78, 78, 1);
+}
+
+
+.top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    > p {
+        display: none;
+        font-size: 16px;
+        line-height: 22px;
+        max-width: 233px;
+    }
+}
+
+.icons {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    >li {
+        cursor: pointer;
+        >svg {
+            width: 28px;
+            height: 28px;
+        }
+    }
+}
+
+.address {
+    display: none;
+    gap: 8px;
+    align-items: center;
+    height: 100%;
+    >p {
+        max-width: 211px;
+    }
+}
+
+.numbers {
+    display: none;
+    align-items: center;
+    gap: 10px;
+    >div {
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+    }
+}
+
+.bottom {
+    display: none;
+    margin-top: 24px;
+    justify-content: space-between;
+}
+
+.links {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+
+@include breakpoint(md) {
+    .logo {
+        >p {
+            display: block;
+        }
+    }   
+}
+
+
+
+@include breakpoint(xl) {
+    .root {
+        padding-top: 40px;
+    }
+
+ 
+    
+    .address {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        height: 100%;
+        >p {
+            max-width: 211px;
+        }
+    }
+
+    .numbers {
+        display: flex;
+    }
+
+    .burger {
+        display: none;
+    }
+
+    .bottom {
+        display: flex;
+    }
+
+}

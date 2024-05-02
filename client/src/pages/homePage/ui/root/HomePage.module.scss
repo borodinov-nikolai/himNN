@@ -1,0 +1,21 @@
+@import '../../../../shared/styles/mixins/breakpoints';
+
+
+
+.advantages {
+    margin-top: 20px;
+}
+
+.categories {
+    margin-top: 38px;
+}
+
+@include breakpoint(xl) {
+    .advantages {
+        margin-top: 40px;
+    }
+
+    .categories {
+        margin-top: 80px;
+    }
+}

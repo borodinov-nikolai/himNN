@@ -1,0 +1,45 @@
+@import '../../../../../shared/styles/mixins/breakpoints';
+
+
+.list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 17px;
+}
+
+.listItem {
+    display: flex;
+    padding: 15px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    gap: 15px;
+    border-radius: 4px;
+    >p {
+        text-align: center;
+        font-size: 16px;
+        line-height: 22px;
+        font-weight: 600;
+        color: rgba(78, 78, 78, 1);
+    }
+}
+
+
+
+@include breakpoint(lg) {
+    .list {
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: 1fr;
+        gap: 48px;
+    }
+
+    .listItem {
+        >p {
+            max-width: 200px;
+            font-size: 18px;
+            line-height: 25px;
+        }
+    }
+}

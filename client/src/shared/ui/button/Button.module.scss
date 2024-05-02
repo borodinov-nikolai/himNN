@@ -1,0 +1,12 @@
+.root {
+    cursor: pointer;
+    background: var(--button-background);
+    border: none;
+    color: white;
+    font-size: 16px;
+    line-height: 21px;
+    white-space: nowrap;
+    &:hover {
+        background: var(--button-background-hover);
+    }
+}
