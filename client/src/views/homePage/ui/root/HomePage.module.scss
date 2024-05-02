@@ -2,6 +2,10 @@
 
 
 
+.root {
+    padding-bottom: 40px;
+}
+
 .advantages {
     margin-top: 20px;
 }
@@ -10,12 +14,26 @@
     margin-top: 38px;
 }
 
+
+.partners {
+    margin-top: 38px;
+}
+
 @include breakpoint(xl) {
+    
+    .root {
+        padding-bottom: 80px;
+    }
+
     .advantages {
         margin-top: 40px;
     }
 
     .categories {
+        margin-top: 80px;
+    }
+
+    .partners {
         margin-top: 80px;
     }
 }

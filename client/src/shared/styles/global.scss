@@ -6,8 +6,13 @@
 
 
 body {
-    min-height: 100vh;
     background: var(--background-color);
+}
+
+
+
+main {
+    min-height: 100vh;
 }
 
 .container {

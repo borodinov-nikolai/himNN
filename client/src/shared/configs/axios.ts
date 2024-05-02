@@ -3,5 +3,5 @@ import axios from "axios";
 
 
 export const $serverApi = axios.create({
-    baseURL: process.env.BACKEND_API
+    baseURL: process.env.NEXT_PUBLIC_BACKEND_API
 })
