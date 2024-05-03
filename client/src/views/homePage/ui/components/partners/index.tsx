@@ -8,40 +8,49 @@ import Image from 'next/image'
 type Partner = {
     id: number
     image: string
+    href: string
 }
 
 const partnersList : Partner[] = [
     {
         id: 1,
-        image: '/images/partner_1.png'
+        image: '/images/partner_1.png',
+        href: 'https://www.gsverf.ru/'
     },
     {
         id: 2,
-        image: '/images/partner_2.png'
+        image: '/images/partner_2.png',
+        href: "http://www.almaz-antey.ru/"
     },
     {
         id: 3,
-        image: '/images/partner_3.png'
+        image: '/images/partner_3.png',
+        href: "https://ktrv.ru"
     },
     {
         id: 4,
-        image: '/images/partner_4.png'
+        image: '/images/partner_4.png',
+        href: "https://www.rosatom.ru/index.html"
     },
     {
         id: 5,
-        image: '/images/partner_5.png'
+        image: '/images/partner_5.png',
+        href: "https://ese-osg.ru/"
     },
     {
         id: 6,
-        image: '/images/partner_6.png'
+        image: '/images/partner_6.png',
+        href: "https://www.sibur.ru/rusvinyl/"
     },
     {
         id: 7,
-        image: '/images/partner_7.png'
+        image: '/images/partner_7.png',
+        href: "https://www.rzd.ru/"
     },
     {
         id: 8,
-        image: '/images/partner_8.png'
+        image: '/images/partner_8.png',
+        href: "https://www.tplusgroup.ru/"
     },
 ]
 
