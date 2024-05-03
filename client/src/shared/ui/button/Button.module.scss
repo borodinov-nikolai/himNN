@@ -4,8 +4,11 @@
     border: none;
     color: white;
     font-size: 16px;
-    line-height: 21px;
+    line-height: 22px;
     white-space: nowrap;
+    font-weight: 500;
+    border-radius: 2px;
+    color: rgba(255, 255, 255, 1);
     &:hover {
         background: var(--button-background-hover);
     }

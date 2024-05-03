@@ -1,4 +1,4 @@
-@import "../../../shared/styles/mixins/breakpoints";
+@import "../../../../shared/styles/mixins/breakpoints";
 .root {
     padding-top: 20px;
     padding-bottom: 20px;
@@ -71,6 +71,12 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
+    >li {
+        
+        &:hover {
+            color: #00B302;
+        }
+    }
 }
 
 

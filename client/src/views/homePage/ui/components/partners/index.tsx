@@ -1,7 +1,9 @@
-import React from 'react'
+'use client'
+import React, { useState } from 'react'
 import styles from './Partners.module.scss'
 import cs from 'classnames'
 import Image from 'next/image'
+import Link from 'next/link'
 
 
 
@@ -55,18 +57,22 @@ const partnersList : Partner[] = [
 ]
 
 const Partners = () => {
+    const [showMore, setShowMore] = useState<boolean>(false)
   return (
     <div>
-        <div className='container' >
+        <div className={cs('container', styles.inner)} >
             <h2 className={styles.title} >Нам доверяют</h2>
-            <ul className={styles.list} >
-               {partnersList?.map(({id, image})=> 
+            <ul className={cs(styles.list, showMore && styles.list__active)} >
+               {partnersList?.map(({id, image, href})=> 
             <li className={styles.listItem} key={id} >
-                <Image src={image} width={400} height={400} alt='partner image'/>
+                <Link href={href} >
+                    <Image src={image} width={400} height={400} alt='partner image'/>
+                </Link>
             </li>   
             )
                }
             </ul>
+               {!showMore && <button className={styles.showMoreBtn} onClick={()=> setShowMore(true)} >Смотреть еще</button>}
         </div>
     </div>
   )

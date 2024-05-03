@@ -1,12 +1,11 @@
 'use client'
-import React from 'react'
-import { Swiper, SwiperSlide } from 'swiper/react';
-import Image from 'next/image';
-import { Autoplay, Pagination } from 'swiper/modules';
 import styles from './Carousel.module.scss';
+import React from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import cs from 'classnames'
+import cs from 'classnames';
 import Button from '@/shared/ui/button';
 
 

@@ -1,11 +1,26 @@
-import React from 'react'
+import React, { FC } from 'react'
 import styles from './Header.module.scss'
 import cs from 'classnames'
 import Image from 'next/image'
 import Button from '@/shared/ui/button'
 import Link from 'next/link'
+import MobileMenu from '../components/mobileMenu'
+import { ICategory } from '@/entities/category'
 
-export const Header = () => {
+
+
+
+
+
+interface IProps {
+  categories?: ICategory
+}
+
+
+export const Header: FC<IProps> =  ({categories}) => {
+  
+
+
   return (
     <header className={styles.root} >
       <div className={cs(styles.inner, 'container')} >
@@ -46,23 +61,19 @@ export const Header = () => {
                 <path d="M9.62499 26.1667C10.4304 26.1667 11.0833 25.5137 11.0833 24.7083C11.0833 23.9029 10.4304 23.25 9.62499 23.25C8.81957 23.25 8.16666 23.9029 8.16666 24.7083C8.16666 25.5137 8.81957 26.1667 9.62499 26.1667Z" stroke="#4E4E4E" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </li>
-            <li className={styles.burger} >
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M3.5 8.16663H24.5" stroke="#00BD12" strokeWidth="1.5" strokeLinecap="round"/>
-<path d="M3.5 14H24.5" stroke="#00BD12" strokeWidth="1.5" strokeLinecap="round"/>
-<path d="M3.5 19.8334H24.5" stroke="#00BD12" strokeWidth="1.5" strokeLinecap="round"/>
-</svg>
-
-            </li>
+            <li  className={styles.burger} >
+         <MobileMenu categories={categories} />
+         </li>
           </ul>
         </div>
         <div className={styles.bottom}>
           <ul className={styles.links}>
-            <Link href=""><li>Каталог</li></Link>
-            <Link href=""><li>Доставка</li></Link>
-            <Link href=""><li>Оплата</li></Link>
-            <Link href=""><li>О компании</li></Link>
-            <Link href=""><li>Контакты</li></Link>
+
+            <li><Link href="">Каталог</Link></li>
+            <li><Link href="">Доставка</Link></li>
+            <li><Link href="">Оплата</Link></li>
+            <li><Link href="">О компании</Link></li>
+            <li><Link href="">Контакты</Link></li>
             <Button width='202px' height='43px' >Заказать звонок</Button>
           </ul>
         </div>

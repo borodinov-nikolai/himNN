@@ -2,9 +2,8 @@ import React from 'react'
 import Carousel from '../components/carousel'
 import styles from './HomePage.module.scss'
 import Adnatages from '../components/advantages'
-
 import { getAllCategories } from '@/entities/category'
-import  Categories from '../components/categories'
+import Categories from '../components/categories'
 import Partners from '../components/partners'
 
 
