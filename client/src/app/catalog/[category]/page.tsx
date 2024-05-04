@@ -1,12 +1,19 @@
+import { CategoryPage } from '@/views/categoryPage'
 import React from 'react'
 
+
+
+
+export const dynamic ='force-dynamic'
 
 
 const page = ({params}: {params:{category:string}}) => {
 
 
   return (
-    <main className='container' style={{fontSize:'48px'}} >{params.category}</main>
+    <>
+    <CategoryPage categoryName={params?.category} />
+    </>
   )
 }
 

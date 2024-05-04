@@ -1,0 +1,48 @@
+.root {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    height: calc(100vh - 400px);
+    padding-top: 4px;
+}
+
+.root h2 {
+    font-size: 24px;
+    line-height: 140%;
+    font-weight: 600;
+    color: #4E4E4E;
+}
+
+.root h4,
+.root .Text,
+.root >ul >li {
+    color: #4E4E4E;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.root >ul {
+    padding-left: 16px;
+}
+
+.Map iframe {
+    width: 100% !important;
+    border-radius: 4px !important;
+    border: none !important;
+}
+
+@media screen and (max-width: 1200px) {
+    .root {
+        padding: 0 15px;
+        padding-top: 20px;
+    }
+}
+
+@media screen and (max-height: 670px) {
+    .root {
+        height: auto;
+    }
+}

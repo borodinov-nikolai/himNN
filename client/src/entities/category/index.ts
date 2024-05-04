@@ -1,2 +1,3 @@
+export type {ICategories} from './interfaces/category'
 export type {ICategory} from './interfaces/category'
-export {getAllCategories} from './api'
+export {getAllCategories, getCategory} from './api'

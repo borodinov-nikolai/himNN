@@ -24,6 +24,7 @@
 }
 
 .closeBtn {
+    cursor: pointer;
     border: none;
     background-color: unset;
 }
@@ -120,6 +121,12 @@
     gap: 3px;
     font-weight: 400;
     color: rgba(78, 78, 78, 1);
+    a {
+        color: inherit;
+        &:hover {
+            color: inherit;
+        }
+    }
 }
 
 .address {

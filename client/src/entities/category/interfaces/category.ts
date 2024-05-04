@@ -2,12 +2,17 @@ import { IImage } from "@/entities/image"
 
 
 
-export interface ICategory {
-    data: Daum[]
+export interface ICategories {
+    data: Data[]
     meta: Meta
   }
+
+export interface ICategory {
+    data: Data
+    mete: Meta
+  }
   
-  export interface Daum {
+  export interface Data {
     id: number
     attributes: Attributes
   }

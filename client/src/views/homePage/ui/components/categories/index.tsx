@@ -1,5 +1,5 @@
 'use client'
-import { ICategory } from '@/entities/category'
+import { ICategories } from '@/entities/category'
 import React, { FC } from 'react'
 import styles from './Categories.module.scss'
 import cs from 'classnames'
@@ -9,7 +9,7 @@ import Button from '@/shared/ui/button'
 import Link from 'next/link'
 
 interface IProps {
-  categories?: ICategory
+  categories?: ICategories
 }
 
 const Categories: FC<IProps> = ({categories}) => {
@@ -26,7 +26,7 @@ const Categories: FC<IProps> = ({categories}) => {
             return(
               <li className={styles.listItem} key={id}>
                 <div className={styles.imageHolder} >
-                  { imagePath && <Image src={imageUrl + imagePath} width={250} height={250} alt='caterory image'/>}
+                  { imagePath && <Image src={imageUrl + imagePath} width={300} height={300} alt='caterory image'/>}
                 </div>
                 <div className={styles.content} >
                   <h3>{name}</h3>

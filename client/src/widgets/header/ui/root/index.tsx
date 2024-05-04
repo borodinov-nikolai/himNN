@@ -5,21 +5,19 @@ import Image from 'next/image'
 import Button from '@/shared/ui/button'
 import Link from 'next/link'
 import MobileMenu from '../components/mobileMenu'
-import { ICategory } from '@/entities/category'
+import { getAllCategories} from '@/entities/category'
 
 
 
 
 
 
-interface IProps {
-  categories?: ICategory
-}
 
 
-export const Header: FC<IProps> =  ({categories}) => {
+export const Header = async () => {
   
 
+  const categories = await getAllCategories()
 
   return (
     <header className={styles.root} >
@@ -38,8 +36,8 @@ export const Header: FC<IProps> =  ({categories}) => {
           <div className={styles.numbers} >
             <Image src='/icons/call-calling.png' width={28} height={28} alt='phone icon' />
             <div >
-              <p>+7 (831) 283-30-97</p>
-              <p>+7 (831) 283-30-98</p>
+              <p><Link href={"tel:+78312833097"} >+7 (831) 283-30-97</Link></p>
+              <p><Link href={"tel:+78312833098"} >+7 (831) 283-30-98</Link></p>
             </div>
           </div>
           <ul className={styles.icons} >
@@ -66,17 +64,17 @@ export const Header: FC<IProps> =  ({categories}) => {
          </li>
           </ul>
         </div>
-        <div className={styles.bottom}>
+        <nav className={styles.navigation}>
           <ul className={styles.links}>
 
-            <li><Link href="">Каталог</Link></li>
-            <li><Link href="">Доставка</Link></li>
-            <li><Link href="">Оплата</Link></li>
-            <li><Link href="">О компании</Link></li>
-            <li><Link href="">Контакты</Link></li>
+            <li><Link href="/catalog">Каталог</Link></li>
+            <li><Link href="/delivery">Доставка</Link></li>
+            <li><Link href="/payment">Оплата</Link></li>
+            <li><Link href="/about">О компании</Link></li>
+            <li><Link href="/contacts">Контакты</Link></li>
             <Button width='202px' height='43px' >Заказать звонок</Button>
           </ul>
-        </div>
+        </nav>
       </div>
     </header>
   )

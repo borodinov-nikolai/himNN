@@ -16,11 +16,11 @@ export const Footer = () => {
           <h3>Контакты</h3>
 
           <div className={styles.numbers} >
-            <p>+7 (831) 283-30-97</p>
-            <p>+7 (920) 059 20 50</p>
+              <p><Link href={"tel:+78312833097"} >+7 (831) 283-30-97</Link></p>
+              <p><Link href={"tel:+78312833098"} >+7 (831) 283-30-98</Link></p>
           </div>
 
-          <p>him-nnov@mail.ru</p>
+          <p><Link href={"mailto:him-nnov@mail.ru"} >him-nnov@mail.ru</Link></p>
 
         </div>
         <div className={styles.address} >
@@ -35,18 +35,18 @@ export const Footer = () => {
             <p>Сб-Вс: выходной</p>
           </div>
         </div>
-        <div className={styles.navigation} >
+        <nav className={styles.navigation} >
           <h3>Навигация</h3>
           <ul>
-            <Link href="#" ><li>Каталог</li></Link  >
-            <Link href="#" ><li>Доставка</li></Link  >
-            <Link href="#" ><li>Оплата</li></Link  >
-            <Link href="#" ><li>О компании</li></Link  >
-            <Link href="#" ><li>Контакты</li></Link  >
-            <Link href="#" ><li>Политика безопасности</li></Link>
+            <Link href="/catalog" ><li>Каталог</li></Link  >
+            <Link href="/delivery" ><li>Доставка</li></Link  >
+            <Link href="/payment" ><li>Оплата</li></Link  >
+            <Link href="/about" ><li>О компании</li></Link  >
+            <Link href="/contacts" ><li>Контакты</li></Link  >
+            <Link href="/politics" ><li>Политика безопасности</li></Link>
           </ul>
           
-        </div>
+        </nav>
 
       </div>
 

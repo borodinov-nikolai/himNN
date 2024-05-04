@@ -1,0 +1,28 @@
+@import '../../styles/mixins/breakpoints';
+
+
+.root {
+display: none;
+  
+}
+
+
+.list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+
+.listItem {
+    color: rgba(190, 190, 190, 1); 
+    font-size: 14px;
+    line-height: 19px;
+
+}
+
+@include breakpoint(xl) {
+    .root {
+        display: flex;
+    }
+}

@@ -6,27 +6,27 @@ import Image from 'next/image'
 import cs from 'classnames'
 import Link from 'next/link'
 import Button from '@/shared/ui/button'
-import { ICategory } from '@/entities/category'
+import { ICategories } from '@/entities/category'
 import useWindowWidth from '@/shared/hooks/useWindowWidth'
 
 
 interface IProps {
-    categories?: ICategory
+  categories?: ICategories
 }
 
-const MobileMenu: FC<IProps> = ({categories}) => {
-    const [open, setOpen] = useState<boolean>(false)
-    const [catalogOpen, setCatalogOpen] = useState<boolean>(false)
-    const windowWidth = useWindowWidth()
+const MobileMenu: FC<IProps> = ({ categories }) => {
+  const [open, setOpen] = useState<boolean>(false)
+  const [catalogOpen, setCatalogOpen] = useState<boolean>(false)
+  const windowWidth = useWindowWidth()
 
 
   const handleClose = () => {
     setOpen(false);
   };
 
-  useEffect(()=> {
-    if(windowWidth && windowWidth > 1200) {
-        handleClose()
+  useEffect(() => {
+    if (windowWidth && windowWidth > 1200) {
+      handleClose()
     }
   }, [windowWidth])
 
@@ -43,7 +43,7 @@ const MobileMenu: FC<IProps> = ({categories}) => {
 
 
 
-      <Drawer closeIcon={null} bodyStyle={{background: 'rgba(245, 245, 245, 1)', padding: '0'}} headerStyle={{height: '0px'}}  placement='left' width={'100vw'} onClose={handleClose} open={open}>
+      <Drawer closeIcon={null} bodyStyle={{ background: 'rgba(245, 245, 245, 1)', padding: '0' }} headerStyle={{ height: '0px' }} placement='left' width={'100vw'} onClose={handleClose} open={open}>
         <div className={cs('container', styles.content)} >
 
           <div className={styles.header} >
@@ -62,34 +62,36 @@ const MobileMenu: FC<IProps> = ({categories}) => {
             <Image src={'/icons/search.png'} width={24} height={24} alt='search icon' />
           </div>
 
-          <div onClick={()=> setCatalogOpen(!catalogOpen)} className={cs(styles.menuItem, styles.catalog, catalogOpen && styles.catalog__open)} >
+          <div onClick={() => setCatalogOpen(!catalogOpen)} className={cs(styles.menuItem, styles.catalog, catalogOpen && styles.catalog__open)} >
             <p>Каталог</p>
             <Image src={'/icons/стрелка.png'} width={9} height={5} alt='arrow icon' />
           </div>
           <ul className={cs(styles.categories, catalogOpen && styles.categories__open)} >
-            {categories?.data?.map(({id, attributes})=> {
-                const {name, href} = attributes
-              return(
+            {categories?.data?.map(({ id, attributes }) => {
+              const { name, href } = attributes
+              return (
                 <li onClick={handleClose} key={id} className={styles.menuItem} > <Link href={`/catalog/${href}`} >{name}</Link> </li>
               )
             })}
-     
+
           </ul>
-          <div onClick={handleClose} className={styles.menuItem} > <Link href={'#'} >  Доставка</Link></div>
-          <div onClick={handleClose} className={styles.menuItem} > <Link href={'#'} >  О компании</Link></div>
-          <div onClick={handleClose} className={styles.menuItem} > <Link href={'#'} >  Оплата</Link></div>
-          <div onClick={handleClose} className={styles.menuItem} > <Link href={'#'} >  Контакты</Link></div>
-            
-            <div className={styles.numbers} > 
-            <p>+7 (831) 283-30-97</p>
-            <p>+7 (831) 283-30-98</p>
-            </div>
+          <nav className={styles.navigation} >
+            <div onClick={handleClose} className={styles.menuItem} > <Link href={'/delivery'} >  Доставка</Link></div>
+            <div onClick={handleClose} className={styles.menuItem} > <Link href={'/about'} >  О компании</Link></div>
+            <div onClick={handleClose} className={styles.menuItem} > <Link href={'/payment'} >  Оплата</Link></div>
+            <div onClick={handleClose} className={styles.menuItem} > <Link href={'/contacts'} >  Контакты</Link></div>
+          </nav>
 
-            <div className={styles.address} >
+          <div className={styles.numbers} >
+            <p><Link href={"tel:+78312833097"} >+7 (831) 283-30-97</Link></p>
+            <p><Link href={"tel:+78312833098"} >+7 (831) 283-30-98</Link></p>
+          </div>
+
+          <div className={styles.address} >
             г. Нижний Новгород, ул. Кузбасская, д.1Ж, офис 405
-            </div>
+          </div>
 
-            <div className={styles.successBtn}><Button width='100%' height='43px' >Заказать звонок</Button></div>
+          <div className={styles.successBtn}><Button width='100%' height='43px' >Заказать звонок</Button></div>
         </div>
       </Drawer>
 
