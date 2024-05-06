@@ -14,17 +14,37 @@
 }
 
 
+.mainWrapper {
+    display: flex;
+    gap: 24px;
+    margin-top: 40px;
+}
+
+
 .filters {
+    display: none;
     width: 282px;
 }
 
+.content {
+    
+}
+
 @include breakpoint(xl) {
+
+    .filters {
+        display: block;
+    }
+
 
     .root {
         padding-top: 4px;
     }
     .title {
         margin-top: 24px;
+    }
+    .mainWrapper {
+        margin-top: 34px;
     }
 
 }

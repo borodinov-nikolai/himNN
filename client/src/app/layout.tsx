@@ -9,6 +9,7 @@ import { ConfigProvider } from "antd";
 const nunito_Sans = Nunito_Sans({subsets: ["latin"]});
 
 
+export const dynamic = 'force-dynamic'
 
 export default function RootLayout({
   children,
@@ -21,7 +22,9 @@ export default function RootLayout({
       <body className={nunito_Sans.className}>
         <ReduxProvider>
           <AntdRegistry>
-            <ConfigProvider>
+            <ConfigProvider theme={{token: {
+              colorPrimary: 'rgba(0, 179, 2, 1)'
+            }}}>
           <Header/>
         {children}
         <Footer/>

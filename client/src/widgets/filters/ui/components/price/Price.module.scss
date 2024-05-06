@@ -1,0 +1,31 @@
+
+
+
+.priceInputs {
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    gap: 11px;
+
+    >span {
+        width: 12px;
+        height: 1px;
+        border-top: 1px solid rgba(190, 190, 190, 1);
+
+    }
+    >input {
+        width: 96px;
+        height: 24px;
+        border-radius: 2px;
+        border: 1px solid rgba(190, 190, 190, 1);
+        &:focus {
+            outline: none;
+        }
+    }
+}
+
+
+.slider {
+    margin-top: 27px;
+    max-width: 226px;
+}

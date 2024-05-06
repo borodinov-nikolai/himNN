@@ -1,0 +1,1 @@
+export type {ISubcategories, ISubcategory} from './intrfaces/subcategory'

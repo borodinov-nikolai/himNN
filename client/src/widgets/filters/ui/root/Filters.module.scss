@@ -1,0 +1,60 @@
+.root {
+    background: white;
+    border-radius: 4px;
+
+    :global {
+        .ant-checkbox-wrapper {
+            height: 16px;
+        }
+    }
+}
+
+.filter {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid rgba(190, 190, 190, 1);
+    padding: 14px 28px;
+    font-size: 14px;
+    line-height: 19px;
+    color: rgba(78, 78, 78, 1);
+    font-weight: 600;
+    > ul {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-top: 16px;
+
+        > li {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+    }
+}
+
+.price {
+    padding-top: 16px;
+}
+
+.inStock {
+    padding: 31px 28px;
+
+    > div {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    padding: 28px;
+}
+
+.resetBtn {
+    cursor: pointer;
+    border: none;
+    background: none;
+    color: rgba(190, 190, 190, 1);
+}

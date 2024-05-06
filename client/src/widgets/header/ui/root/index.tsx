@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React from 'react'
 import styles from './Header.module.scss'
 import cs from 'classnames'
 import Image from 'next/image'
@@ -6,8 +6,6 @@ import Button from '@/shared/ui/button'
 import Link from 'next/link'
 import MobileMenu from '../components/mobileMenu'
 import { getAllCategories} from '@/entities/category'
-
-
 
 
 

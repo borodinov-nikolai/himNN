@@ -1,18 +1,15 @@
 import { IImage } from "@/entities/image"
 import { IMeta } from "@/entities/meta"
-import { IProducts } from "@/entities/product"
-import { ISubcategories } from "@/entities/subcategory"
 
-
-
-export interface ICategories {
+export interface IProducts {
     data: Data[]
     meta: IMeta
   }
 
-export interface ICategory {
+  
+export interface IProduct {
     data: Data
-    mete: IMeta
+    meta: IMeta
   }
   
   export interface Data {
@@ -22,13 +19,11 @@ export interface ICategory {
   
   export interface Attributes {
     name: string
+    price: number
     createdAt: string
     updatedAt: string
     publishedAt: string
-    href: string
+    description: string
     image: IImage
-    subcategories: ISubcategories
-    products: IProducts
+    inStock: boolean
   }
-
-

@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_characterisctics_values",
+  "info": {
+    "displayName": "value"
+  },
+  "options": {},
+  "attributes": {
+    "value": {
+      "type": "string"
+    }
+  }
+}
