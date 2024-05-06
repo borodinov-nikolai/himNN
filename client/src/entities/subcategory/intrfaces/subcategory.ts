@@ -1,3 +1,4 @@
+import { IImage } from "@/entities/image"
 import { IMeta } from "@/entities/meta"
 
 export interface ISubcategories {
@@ -12,12 +13,13 @@ export interface ISubcategories {
   
   export interface Data {
     id: number
-    attributes: Attributes3
+    attributes: Attributes
   }
   
-  export interface Attributes3 {
+  export interface Attributes {
     name: string
     href: string
+    image: IImage
     createdAt: string
     updatedAt: string
     publishedAt: string

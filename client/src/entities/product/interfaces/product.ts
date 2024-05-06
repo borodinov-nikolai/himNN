@@ -1,5 +1,6 @@
 import { IImage } from "@/entities/image"
 import { IMeta } from "@/entities/meta"
+import { ISubcategory } from "@/entities/subcategory"
 
 export interface IProducts {
     data: Data[]
@@ -24,6 +25,7 @@ export interface IProduct {
     updatedAt: string
     publishedAt: string
     description: string
+    subcategory: ISubcategory
     image: IImage
     inStock: boolean
   }

@@ -966,6 +966,7 @@ export interface ApiSubcategorySubcategory extends Schema.CollectionType {
       'oneToMany',
       'api::product.product'
     >;
+    image: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

@@ -12,17 +12,21 @@ import { IProducts } from '@/entities/product'
 interface IProps {
   filters?: IFilters
   allProducts?: IProducts
+  products?: IProducts
 }
-export const Filters: FC<IProps> = ({ filters, allProducts }) => {
+
+
+export const Filters: FC<IProps> = ({ filters, allProducts, products }) => {
   const [resetPrice, setResetPrice] = useState<boolean>(false)
   const [maxPrice, setMaxPrice] = useState<number>()
   const [price, setPrice] = useState<number[]>()
   const [inStock, setInStock] = useState<boolean>(false)
   const [characteristics, setCharacteristics] = useState<{ name: string, values: string[] }[]>([])
+  const [inStockEntity, setInStockEntity] = useState<string>()
   const router = useRouter()
 
 
-console.log(characteristics)
+
 
 
   useEffect(() => {
@@ -34,7 +38,10 @@ console.log(characteristics)
   }, [allProducts])
 
 
-
+  useEffect(() => {
+    const newArray = products?.data?.filter(({ attributes }) => attributes?.inStock === true)
+    newArray && setInStockEntity(String(newArray?.length))
+  }, [products])
 
 
   useEffect(() => {
@@ -47,8 +54,8 @@ console.log(characteristics)
         inStock: inStock ? {
           $eq: true
         } : undefined,
-        $and: characteristics ? characteristics.map(({name, values})=> {
-          if(name && values.length > 0) {
+        $and: characteristics ? characteristics.map(({ name, values }) => {
+          if (name && values.length > 0) {
             return {
               characteristics: {
                 name: {
@@ -60,13 +67,9 @@ console.log(characteristics)
               }
             }
           }
-       
         }) : undefined
-
       }
     })
-
-
     router.replace(`?${quertString}`)
 
   }, [price, inStock, characteristics])
@@ -115,14 +118,14 @@ console.log(characteristics)
 
 
 
-  const handleReset = ()=> {
+  const handleReset = () => {
     setResetPrice(!resetPrice)
     setCharacteristics([])
     setInStock(false)
 
   }
 
- 
+
 
 
   return (
@@ -135,7 +138,7 @@ console.log(characteristics)
 
       <div className={cs(styles.filter, styles.inStock)} >
         <div>
-          <Checkbox checked={inStock} onChange={(e) => setInStock(e.target.checked)} /> <span> В наличии</span>
+          <Checkbox checked={inStock} onChange={(e) => setInStock(e.target.checked)} /> <span> В наличии</span>{inStockEntity && <span>{`(${inStockEntity})`}</span>}
         </div>
       </div>
       {
@@ -149,7 +152,7 @@ console.log(characteristics)
               <ul>
                 {values?.map(({ id, value }) =>
                   <li key={id} >
-                    <Checkbox checked={characteristics.find((item)=> item.name === name)?.values.includes(value)} onChange={(e) => handleCharacteristicsChange(e.target.checked, name, value)} /> <span>{value}</span>
+                    <Checkbox checked={characteristics.find((item) => item.name === name)?.values.includes(value)} onChange={(e) => handleCharacteristicsChange(e.target.checked, name, value)} /> <span>{value}</span>
                   </li>)
                 }
 

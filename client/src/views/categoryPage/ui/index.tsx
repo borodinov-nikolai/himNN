@@ -5,6 +5,8 @@ import Breadcrumb from '@/shared/ui/breadcrumb'
 import { Filters } from '@/widgets/filters'
 import { getAllFilters } from '@/entities/filter'
 import { getAllProducts } from '@/entities/product'
+import { SubcategoriesList } from '@/widgets/subCategoriesList'
+import { ProductsList } from '@/widgets/productsList'
 
 
 
@@ -13,8 +15,9 @@ export const CategoryPage = async ({categoryName, searchParams}: {categoryName :
   const category = await getCategory(categoryName)
   const filters = await getAllFilters()
   const {name} = category?.data[0]?.attributes || {}
-  const products = await getAllProducts(searchParams)
+  const products = await getAllProducts({params: {name: 'category', value: categoryName}, searchParams})
   const allProducts = await getAllProducts()
+
    
   return (
     <main className={styles.root} >
@@ -22,18 +25,15 @@ export const CategoryPage = async ({categoryName, searchParams}: {categoryName :
         <Breadcrumb items={[{title: 'Каталог', href: '/catalog'}, {title: name}]} />
         <h1 className={styles.title} >{name}</h1>
         <div className={styles.mainWrapper} >
-          <div className={styles.filters} ><Filters allProducts={allProducts}  filters={filters} /></div>
+          <div className={styles.filters} ><Filters products={products} allProducts={allProducts}  filters={filters} /></div>
           <div className={styles.content}>
-            <ul>
-              {products?.data.map(({id, attributes})=> {
-                const {name} = attributes
-                return(
-                  <li key={id} >
-                      {name}
-                  </li>
-                )
-              })}
-            </ul>
+            <div className={styles.categories} >
+              <SubcategoriesList products={products} />
+            </div>
+            <div className={styles.mobileFilters} >Фильтр</div>
+            <div className={styles.products} >
+              <ProductsList products={products} />
+            </div>
              </div>
         </div>
       </div>
