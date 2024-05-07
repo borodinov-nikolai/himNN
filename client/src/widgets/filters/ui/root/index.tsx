@@ -8,15 +8,17 @@ import { IFilters } from '@/entities/filter'
 import qs from 'qs'
 import { useRouter } from 'next/navigation'
 import { IProducts } from '@/entities/product'
+import Button from '@/shared/ui/button'
 
 interface IProps {
   filters?: IFilters
   allProducts?: IProducts
   products?: IProducts
+  onConfirm?: ()=> void
 }
 
 
-export const Filters: FC<IProps> = ({ filters, allProducts, products }) => {
+export const Filters: FC<IProps> = ({ filters, allProducts, products, onConfirm }) => {
   const [resetPrice, setResetPrice] = useState<boolean>(false)
   const [maxPrice, setMaxPrice] = useState<number>()
   const [price, setPrice] = useState<number[]>()
@@ -164,6 +166,7 @@ export const Filters: FC<IProps> = ({ filters, allProducts, products }) => {
       }
 
       <div className={styles.footer} >
+        { onConfirm && <Button onClick={onConfirm} width='114px' >ок</Button>}
         <button onClick={handleReset} className={styles.resetBtn} >X Сбросить</button>
       </div>
 

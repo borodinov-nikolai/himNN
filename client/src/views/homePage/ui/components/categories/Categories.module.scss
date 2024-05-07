@@ -25,11 +25,13 @@
     height: 100%;
     border-radius: 4px;
     background: white;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .imageHolder {
     height: 100%;
-    width: max-content;
+    width: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -43,7 +45,7 @@
 }
 
 .content {
-    width: 100%;
+    width: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -53,14 +55,14 @@
     padding: 20px 0;
 
     >h3 {
-        width: 30vw;
+        width: 120px;
         font-size: 18px;
         line-height: 31px;
         font-weight: 600;
         color: rgba(78, 78, 78, 1);
         text-align: center;
-        overflow: hidden !important;
-        text-overflow: ellipsis !important;
+        overflow: hidden;
+        text-overflow: ellipsis ;
     }
 
     button {
@@ -72,9 +74,12 @@
 }
 
 
+
+
 @include breakpoint(sm) {
     .content {
        >h3 {
+        width: 100%;
         font-size: 18px;
        }
        button {
@@ -87,8 +92,13 @@
 
 
 @include breakpoint(md) {
+
+    .content {
+        width: max-content;
+    }
     
     .content {
+        width: 100%;
         button {
             width: 200px !important;
         }
@@ -141,7 +151,8 @@
  @include breakpoint(xl) {
     
     .content {
-    
+        padding: 44px 0;
+            align-items: center;
   
           button {
               width: 244px !important;

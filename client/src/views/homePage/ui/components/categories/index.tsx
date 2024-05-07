@@ -29,7 +29,7 @@ const Categories: FC<IProps> = ({categories}) => {
                   { imagePath && <Image src={imageUrl + imagePath} width={300} height={300} alt='caterory image'/>}
                 </div>
                 <div className={styles.content} >
-                  <h3>{name}</h3>
+                    <h3>{name}</h3>
                   <Link href={`/catalog/${href}`} ><Button>Смотреть</Button></Link>
                 </div>
               </li>

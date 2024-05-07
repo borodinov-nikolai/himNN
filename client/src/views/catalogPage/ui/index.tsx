@@ -25,7 +25,7 @@ export const CatalogPage = async () => {
                       {imageHref && <Image src={imageUrl + imageHref } width={280} height={280} alt='category image' />}
                     </div>
                       <div className={styles.content} >
-                        <p>{name}</p>
+                        <h3>{name}</h3>
                       </div>
                   </Link>
                 </li>              

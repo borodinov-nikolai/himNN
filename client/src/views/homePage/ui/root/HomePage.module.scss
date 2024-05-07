@@ -3,7 +3,7 @@
 
 
 .root {
-    padding-bottom: 40px;
+    width: 100%;
 }
 
 .advantages {
@@ -20,10 +20,6 @@
 }
 
 @include breakpoint(xl) {
-    
-    .root {
-        padding-bottom: 80px;
-    }
 
     .advantages {
         margin-top: 40px;

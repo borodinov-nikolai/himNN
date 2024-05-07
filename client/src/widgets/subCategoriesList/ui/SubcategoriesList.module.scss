@@ -39,7 +39,28 @@ overflow: hidden;
     font-size: 16px;
     line-height: 22px;
     font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    justify-content: center;
+    align-items: center;
+
         color: rgba(78, 78, 78, 1);
+        >h3 {
+            text-align: center;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 30vw;
+        }
+}
+
+@include breakpoint(sm) {
+
+    .content {
+        
+        >h3 {
+            width: 100%;
+        }
+    }
 }
 
 
@@ -49,6 +70,9 @@ overflow: hidden;
 grid-template-columns: 1fr 1fr;
 }
 
+.content {
+    width: 50%;
+}
 
 .imageHolder {
     width: 50%;

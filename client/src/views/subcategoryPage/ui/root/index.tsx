@@ -7,6 +7,7 @@ import { Filters } from '@/widgets/filters'
 import { ProductsList } from '@/widgets/productsList'
 import { getSubcategory } from '@/entities/subcategory'
 import Breadcrumb from '@/shared/ui/breadcrumb'
+import MobileFilters from '../components/mobileFilters'
 
 
 
@@ -26,7 +27,7 @@ export const SubcategoryPage: FC<IProps> = async ({params, searchParams}) => {
     const {name: subcategoryName} = subcategory?.data[0]?.attributes || {}
     const products = await getAllProducts({params: {name: 'subcategory', value: params.subcategory}, searchParams})
     const allProducts = await getAllProducts()
-  console.log(products)
+
   return (
     <main className={styles.root} >  
           <div className='container' >
@@ -35,7 +36,7 @@ export const SubcategoryPage: FC<IProps> = async ({params, searchParams}) => {
     <div className={styles.mainWrapper} >
       <div className={styles.filters} ><Filters products={products} allProducts={allProducts}  filters={filters} /></div>
       <div className={styles.content}>
-        <div className={styles.mobileFilters} >Фильтр</div>
+        <MobileFilters products={products} allProducts={allProducts} filters={filters} />
         <div className={styles.products} >
           <ProductsList products={products} />
         </div>

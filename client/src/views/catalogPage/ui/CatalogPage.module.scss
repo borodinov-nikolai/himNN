@@ -24,10 +24,12 @@
 .listItem {
     border-radius: 4px;
     background: white;
+    overflow: hidden;
     > a {
         height: 100%;
         display: flex;
     }
+
 }
 
 
@@ -38,8 +40,8 @@
     align-items: center;
     justify-content: center;
     height: 100%;
-    >p {
-        width: 30vw;
+    >h3 {
+        width: 35vw;
         text-align: center;
         font-size: 14px;
         text-overflow: ellipsis;

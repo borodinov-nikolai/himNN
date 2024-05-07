@@ -13,6 +13,7 @@ body {
 
 main {
     min-height: calc(100vh - 91px);
+    padding-bottom: 40px;
 }
 
 .container {
@@ -24,6 +25,7 @@ main {
 @include breakpoint(xl) {
     main {
     min-height: calc(100vh - 178px);
+    padding-bottom: 80px;
 }
     .container {
         padding: 0;

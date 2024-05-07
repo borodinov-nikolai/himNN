@@ -51,8 +51,8 @@
      }
 
     img {
-        height: 100%;
-        width: auto;
+        height: auto;
+        width: 100%;
     }
 }
 
@@ -66,6 +66,17 @@
     border: none;
     margin-top: 10px;
     align-self: flex-end;
+}
+
+
+
+@include breakpoint(sm) {
+    .listItem {
+        img {
+            height: 100%;
+            width: auto;
+        }
+    }
 }
 
 @include breakpoint(lg) {

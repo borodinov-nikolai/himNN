@@ -4,9 +4,6 @@ import React from 'react'
 
 
 
-export const dynamic ='force-dynamic'
-
-
 const page = ({params, searchParams}: {params:{category:string}, searchParams: Record<string, string>}) => {
   
 

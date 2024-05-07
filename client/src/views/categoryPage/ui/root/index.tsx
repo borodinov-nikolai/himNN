@@ -7,6 +7,7 @@ import { getAllFilters } from '@/entities/filter'
 import { getAllProducts } from '@/entities/product'
 import { SubcategoriesList } from '@/widgets/subCategoriesList'
 import { ProductsList } from '@/widgets/productsList'
+import MobileFilters from '../components/mobileFilters'
 
 
 
@@ -27,10 +28,10 @@ export const CategoryPage = async ({categoryName, searchParams}: {categoryName :
         <div className={styles.mainWrapper} >
           <div className={styles.filters} ><Filters products={products} allProducts={allProducts}  filters={filters} /></div>
           <div className={styles.content}>
+              <MobileFilters products={products} allProducts={allProducts}  filters={filters} />
             <div className={styles.categories} >
               <SubcategoriesList products={products} />
             </div>
-            <div className={styles.mobileFilters} >Фильтр</div>
             <div className={styles.products} >
               <ProductsList products={products} />
             </div>

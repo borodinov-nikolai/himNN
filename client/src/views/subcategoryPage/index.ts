@@ -1,1 +1,1 @@
-export {SubcategoryPage} from './ui'
+export {SubcategoryPage} from './ui/root'

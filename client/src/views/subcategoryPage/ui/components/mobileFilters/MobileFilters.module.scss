@@ -1,0 +1,42 @@
+@import '../../../../../shared/styles/mixins/breakpoints';
+
+
+.root {
+    margin: 20px 0;
+    width: 100%;
+    position: relative;
+}
+
+.openBtn {
+    cursor: pointer;
+    display: flex;
+    gap:4px;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 500;
+    color: rgba(78, 78, 78, 1);
+    background: none;
+    border: none;
+}
+
+.filters {
+    display: none;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 50px;
+    z-index: 2;
+
+
+     &__active {
+            display: block;
+     }
+
+}
+
+
+@include breakpoint(xl) {
+    .root {
+        display: none;
+    }
+}

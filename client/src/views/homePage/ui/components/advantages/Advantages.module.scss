@@ -19,10 +19,22 @@
     border-radius: 4px;
     >p {
         text-align: center;
-        font-size: 16px;
+        font-size: 15px;
         line-height: 22px;
         font-weight: 600;
         color: rgba(78, 78, 78, 1);
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+
+
+@include breakpoint(sm) {
+    .listItem {
+        >p {
+            font-size: 16px;
+        }
     }
 }
 

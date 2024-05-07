@@ -53,7 +53,7 @@ const Carousel = () => {
         <Swiper
         className={styles.root}
          modules={[Autoplay, Pagination]}
-            spaceBetween={0}
+      
             navigation={true}
             autoplay={{
                 delay: 4000,

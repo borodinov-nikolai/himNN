@@ -7,11 +7,12 @@ interface IProps {
   width?: string
   height?: string
   children?: ReactNode
+  onClick?: ()=> void
 }
 
-const Button: FC<IProps> = ({width="200px", height="40px", children}) => {
+const Button: FC<IProps> = ({width="200px", height="40px", children, onClick}) => {
   return (
-    <button style={{width, height}} className={styles.root} >{children}</button>
+    <button onClick={onClick} style={{width, height}} className={styles.root} >{children}</button>
   )
 }
 
