@@ -924,6 +924,7 @@ export interface ApiProductProduct extends Schema.CollectionType {
       'characterisctics.characteristcic',
       true
     >;
+    priceUnits: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

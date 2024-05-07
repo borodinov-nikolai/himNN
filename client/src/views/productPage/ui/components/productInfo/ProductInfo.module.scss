@@ -1,0 +1,107 @@
+@import '../../../../../shared/styles/mixins/breakpoints';
+
+
+
+.root {
+    width: 100%;
+}
+
+.info {
+    height: max-content;
+    border-radius: 4px;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    gap: 22px;
+    padding: 32px 10px;
+}
+
+.infoImageHolder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    width: 100%;
+
+}
+.infoContent {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.infoName {
+    font-size: 14px;
+    line-height: 19px;
+    color: rgba(78, 78, 78, 1);
+}
+.infoMore {
+    margin-top: 14px;
+    font-size: 14px;
+    line-height: 19px;
+    color: rgba(0, 179, 2, 1);
+}
+
+.infoPrice {
+    margin-top: 34px;
+    font-size: 24px;
+    color: rgba(78, 78, 78, 1);
+    font-weight: 33px;
+}
+
+.infoInStock {
+    margin-top: 24px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 14px;
+        line-height: 19px;
+        color: rgba(190, 190, 190, 1);
+}
+
+.infoFooter {
+    margin-top: 34px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    justify-content: center;
+}
+
+
+
+@include breakpoint(md) {
+    .info {
+        height: 333px;
+        flex-direction: row;
+        gap: 56px;
+        padding: 30px 40px;
+    }
+
+    .infoImageHolder {
+        width: 50%;
+    }
+
+    .infoContent {
+        width: 50%;
+    }
+
+    .infoFooter {
+        justify-content: flex-start;
+    }
+}
+
+
+@include breakpoint(xl) {
+
+   
+
+    .infoImageHolder {
+        width: 50%;
+    }
+
+    .infoContent {
+        width: 50%;
+    }
+}
+
+

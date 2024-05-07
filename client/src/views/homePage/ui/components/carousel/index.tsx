@@ -3,10 +3,10 @@ import styles from './Carousel.module.scss';
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/pagination';
 import cs from 'classnames';
 import Button from '@/shared/ui/button';
+import 'swiper/css';
+import 'swiper/css/pagination';
 
 
 
@@ -53,14 +53,14 @@ const Carousel = () => {
         <Swiper
         className={styles.root}
          modules={[Autoplay, Pagination]}
-      
+           spaceBetween={0}
             navigation={true}
             autoplay={{
                 delay: 4000,
                 disableOnInteraction: false
             }}
             speed={800}
-            slidesPerView={1}
+            slidesPerView={'auto'}
             pagination={{
                 clickable: true,
             }}

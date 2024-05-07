@@ -1,5 +1,6 @@
 .root {
     cursor: pointer;
+    user-select: none;
     background: var(--button-background);
     border: none;
     color: white;

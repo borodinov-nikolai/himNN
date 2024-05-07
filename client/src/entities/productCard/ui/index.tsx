@@ -1,29 +1,27 @@
 'use client'
-import React, { FC } from 'react'
+import React, { FC, ReactNode } from 'react'
 import styles from './ProductCard.module.scss'
-import { IImage, imageUrl } from '@/entities/image'
+import {imageUrl } from '@/entities/image'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
+import { IProduct } from '@/entities/product'
 
 
 interface IProps {
-  product: {
-    name: string
-    price: number
-    createdAt: string
-    updatedAt: string
-    publishedAt: string
-    description: string
-    image: IImage
-    inStock: boolean
-
-  }
+  toCartButton?: ReactNode
+  toFavoritesButton?: ReactNode
+  product?: IProduct
 }
 
-export const ProductCard: FC<IProps> = ({product}) => {
-  const {name, image, inStock, price} = product || {}
+export const ProductCard: FC<IProps> = ({product, toCartButton, toFavoritesButton}) => {
+  const router = useRouter()
+  const {name, image, inStock, price, subcategory, category, priceUnits} = product?.data?.attributes || {}
   const imageHref = image?.data?.attributes?.url
+  const subcategoryHref = subcategory?.data?.attributes?.href
+  const categoryHref = category?.data?.attributes?.href
+  const productId = product?.data?.id
   return (
-    <div className={styles.root} >
+    <div onClick={()=> (subcategoryHref && categoryHref) && router.push(`/catalog/${categoryHref}/${subcategoryHref}/${productId}`)} className={styles.root} >
       <div className={styles.imageHolder} >
         {imageHref && <Image src={imageUrl + imageHref} width={400} height={400} alt='prosuct image' />}
       </div>
@@ -43,7 +41,7 @@ export const ProductCard: FC<IProps> = ({product}) => {
 <span>Нет в наличии</span>
        </p>
        }
-       <div className={styles.price} >{price} руб./кг</div>
+       <div className={styles.price} >{price} <span>{priceUnits}</span></div>
     </div>
   )
 }

@@ -1,2 +1,2 @@
 export type {IProduct, IProducts} from './interfaces/product'
-export {getAllProducts} from './api'
+export {getAllProducts, getProduct} from './api'

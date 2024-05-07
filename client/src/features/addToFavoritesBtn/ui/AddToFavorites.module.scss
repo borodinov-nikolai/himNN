@@ -1,0 +1,16 @@
+
+
+
+
+.root {
+    cursor: pointer;
+    width: 18px;
+    height: 20px;
+
+    &__active {
+
+        >svg {
+            fill: rgba(78, 78, 78, 1);
+        }
+    }
+}

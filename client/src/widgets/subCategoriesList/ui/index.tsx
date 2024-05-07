@@ -14,7 +14,7 @@ export const SubcategoriesList = ({products}: {products?: IProducts}) => {
     const router = useRouter()
 const [subcategories, setSubcategories] = useState<{id: number, name: string, href: string, image: string}[]>([])
 
-
+  
     useEffect(()=>{
         const newArray = products?.data?.map(({id, attributes})=>{
             const {subcategory} = attributes

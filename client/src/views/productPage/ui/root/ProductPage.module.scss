@@ -1,0 +1,35 @@
+@import '../../../../shared/styles/mixins/breakpoints';
+
+
+
+.root {
+    margin-top: 20px;
+}
+
+
+.title {
+    line-height: 33px;
+    font-size: 24px;
+    font-weight: 600;
+    color: rgba(78, 78, 78, 1);
+
+}
+
+.productInfo {
+    margin-top: 20px;
+}
+
+
+@include breakpoint(xl) {
+    .root{
+        margin-top: 4px;
+    }
+
+    .title {
+        margin-top: 24px;
+    }
+
+    .productInfo {
+        margin-top: 40px;
+    }
+}

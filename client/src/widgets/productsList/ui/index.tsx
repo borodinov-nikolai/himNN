@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import styles from './ProductList.module.scss'
-import { ProductCard } from '@/features/productCard'
+import { ProductCard } from '@/entities/productCard'
 import { IProducts } from '@/entities/product'
 
 
@@ -15,7 +15,7 @@ export const ProductsList: FC<IProps> = ({products}) => {
     <ul className={styles.root} >
 
         {products?.data?.map(({id, attributes})=> 
-        <li key={id} ><ProductCard product={attributes} /></li>
+        <li key={id} ><ProductCard product={ {data: {id, attributes}}} /></li>
         )}
       
     </ul>
