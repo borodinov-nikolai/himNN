@@ -9,6 +9,7 @@ import qs from 'qs'
 import { useRouter } from 'next/navigation'
 import { IProducts } from '@/entities/product'
 import Button from '@/shared/ui/button'
+import { useDebounce } from 'use-debounce'
 
 interface IProps {
   filters?: IFilters
@@ -26,6 +27,7 @@ export const Filters: FC<IProps> = ({ filters, allProducts, products, onConfirm 
   const [characteristics, setCharacteristics] = useState<{ name: string, values: string[] }[]>([])
   const [inStockEntity, setInStockEntity] = useState<string>()
   const router = useRouter()
+  const [debouncedPrice] = useDebounce(price, 500)
 
 
 
@@ -50,8 +52,8 @@ export const Filters: FC<IProps> = ({ filters, allProducts, products, onConfirm 
 
     const quertString = qs.stringify({
       filters: {
-        price: price ? {
-          $between: price
+        price: debouncedPrice ? {
+          $between: debouncedPrice
         } : undefined,
         inStock: inStock ? {
           $eq: true
@@ -74,7 +76,7 @@ export const Filters: FC<IProps> = ({ filters, allProducts, products, onConfirm 
     })
     router.replace(`?${quertString}`)
 
-  }, [price, inStock, characteristics])
+  }, [debouncedPrice, inStock, characteristics])
 
 
 
