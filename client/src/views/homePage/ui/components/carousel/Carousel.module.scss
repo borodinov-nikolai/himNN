@@ -1,8 +1,8 @@
 @import "../../../../../shared/styles/mixins/breakpoints";
 
 .root {
-    width: 100vw !important;
-    height: calc(100dvh - 91px);
+    width: 100% !important;
+    height: calc(100svh - 91px) !important;
     position: relative;
     margin: 0;
     padding: 0;
@@ -15,7 +15,7 @@
 }
 
 .slide {
-    width: 100vw !important;
+    width: 100% !important;
     position: relative;
     background-position: center;
     background-repeat: no-repeat;
@@ -105,7 +105,7 @@
 @include breakpoint(lg) {
 
     .root {
-        height: 400px;
+        height: 400px !important;
     }
 
 

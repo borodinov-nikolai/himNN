@@ -5,7 +5,7 @@ import { ICategories} from "../interfaces/category";
 
 export const getAllCategories = async ()=> {
     try {
-        const {data}:{data: ICategories} = await $serverApi.get('/categories?populate=*')
+        const {data}:{data: ICategories} = await $serverApi.get('/categories?sort=name:asc&populate=*')
         return data;
     } catch(e) {
         console.error(e)

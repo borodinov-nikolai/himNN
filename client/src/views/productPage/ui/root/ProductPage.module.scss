@@ -19,6 +19,9 @@
     margin-top: 20px;
 }
 
+.productDescription {
+    margin-top: 57px;
+}
 
 @include breakpoint(xl) {
     .root{
@@ -30,6 +33,10 @@
     }
 
     .productInfo {
+        margin-top: 40px;
+    }
+
+    .productDescription {
         margin-top: 40px;
     }
 }

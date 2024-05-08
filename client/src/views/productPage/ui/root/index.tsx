@@ -3,6 +3,7 @@ import styles from './ProductPage.module.scss'
 import Breadcrumb from '@/shared/ui/breadcrumb'
 import { getProduct } from '@/entities/product'
 import ProductInfo from '../components/productInfo'
+import ProductDescription from '../components/productDescription'
 
 
 
@@ -27,6 +28,9 @@ const {name: subcategoryName, href: subcategoryHref} = subcategory?.data?.attrib
 
             <div className={styles.productInfo}>
               <ProductInfo product={product}/>
+            </div>
+            <div className={styles.productDescription}>
+              <ProductDescription product={product} />
             </div>
       </div>
     </main>

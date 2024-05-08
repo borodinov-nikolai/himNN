@@ -6,7 +6,7 @@ import { ISubcategories} from "../intrfaces/subcategory";
 
 export const getAllSubcategories = async ()=> {
     try {
-        const {data}:{data: ISubcategories} = await $serverApi.get('/subcategories?populate=*')
+        const {data}:{data: ISubcategories} = await $serverApi.get('/subcategories?sort=name:ascpopulate=*')
         return data;
     } catch(e) {
         console.error(e)
