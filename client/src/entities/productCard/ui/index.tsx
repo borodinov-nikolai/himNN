@@ -42,6 +42,9 @@ export const ProductCard: FC<IProps> = ({product, toCartButton, toFavoritesButto
        </p>
        }
        <div className={styles.price} >{price} <span>{priceUnits}</span></div>
+       <div className={styles.favoritesBtn} >
+        {toFavoritesButton}
+       </div>
     </div>
   )
 }

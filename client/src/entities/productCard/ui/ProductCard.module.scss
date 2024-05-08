@@ -1,6 +1,7 @@
 @import "../../../shared/styles/mixins/breakpoints";
 
 .root {
+    user-select: none;
     cursor: pointer;
     width: 100%;
     height: 100%;
@@ -11,6 +12,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
+
+    &:hover {
+        .favoritesBtn {
+            display: block;
+        }
+    }
 }
 
 .imageHolder {
@@ -59,6 +67,14 @@
     font-size: 16px;
     line-height: 22px;
     font-weight: 700;
+}
+
+.favoritesBtn {
+
+    display: none;  
+    position: absolute;
+    top: 7px;
+    right: 7px;
 }
 
 @include breakpoint(xl) {
