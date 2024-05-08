@@ -35,7 +35,7 @@ const tabsList = [
 
 
 const ProductDescription: FC<IProps> = ({ product }) => {
-  const [activeTab, setActiveTab] = useState<string>('Описание')
+  const [activeTab, setActiveTab] = useState<string>("Описание")
   const {inStock} = product?.data?.attributes || {}
   let tabContent;
 
@@ -83,10 +83,10 @@ const ProductDescription: FC<IProps> = ({ product }) => {
       break;
     case "Оплата":
       tabContent = <div>
-        Способы оплаты:
+      Способы оплаты:
 Наличный расчет
 Безналичный расчет
-Банковские реквизиты для перечисления д/с:ООО "Хим-НН"ИНН 5257135802 / КПП 525701001р/с 40702810290080000187 Филиал Приволжский  ПАО Банк "ФК Открытие" г. Нижний Новгород к/с 30101810300000000881 БИК 042282881р/с 40702810829050009036 Филиал «Нижегородский» АО «АЛЬФА-БАНК» г. Нижний Новгород к/с 30101810200000000824 БИК 042202824
+Банковские реквизиты для перечисления д/с:ООО  Хим-НН ИНН 5257135802 / КПП 525701001р/с 40702810290080000187 Филиал Приволжский  ПАО Банк  ФК Открытие  г. Нижний Новгород к/с 30101810300000000881 БИК 042282881р/с 40702810829050009036 Филиал «Нижегородский» АО «АЛЬФА-БАНК» г. Нижний Новгород к/с 30101810200000000824 БИК 042202824
       </div>
       break;
 
@@ -95,7 +95,6 @@ const ProductDescription: FC<IProps> = ({ product }) => {
   return (
     <div className={styles.root} >
       <nav className={styles.tabs} >
-
         <Swiper
         slidesPerView={'auto'}
         className={styles.tabsList} >
