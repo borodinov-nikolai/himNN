@@ -20,6 +20,7 @@ export interface ISubcategories {
     name: string
     href: string
     image: IImage
+    description: string
     createdAt: string
     updatedAt: string
     publishedAt: string

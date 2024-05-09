@@ -24,10 +24,10 @@ const Counter:FC<IProps> = ({value, onChange, onMinusClik, onPlusClik}) => {
     }, [value])
 
   return (
-    <div className={styles.root} >
-        <div onClick={()=>{ handleCountChange('minus'); onMinusClik && onMinusClik()}} className={styles.btn} >-</div>
+    <div onClick={(e)=> e.stopPropagation()} className={styles.root} >
+        <div onClick={()=>{handleCountChange('minus'); onMinusClik && onMinusClik()}} className={styles.btn} >-</div>
         <div className={styles.count}>{count}</div>
-        <div onClick={()=>{ handleCountChange('plus'); onPlusClik && onPlusClik() }} className={styles.btn} >+</div>
+        <div onClick={()=>{handleCountChange('plus'); onPlusClik && onPlusClik() }} className={styles.btn} >+</div>
     </div>
   )
 }

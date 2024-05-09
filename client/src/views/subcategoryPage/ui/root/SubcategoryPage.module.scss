@@ -14,6 +14,15 @@
   
 }
 
+.description {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;  
+    width: 100%;
+    img {
+        width: 800px;
+    }
+}
 
 .mainWrapper {
     padding-top: 20px;

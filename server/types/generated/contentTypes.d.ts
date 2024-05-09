@@ -968,6 +968,7 @@ export interface ApiSubcategorySubcategory extends Schema.CollectionType {
       'api::product.product'
     >;
     image: Attribute.Media;
+    description: Attribute.RichText;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

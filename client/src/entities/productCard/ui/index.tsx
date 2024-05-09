@@ -5,6 +5,8 @@ import {imageUrl } from '@/entities/image'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { IProduct } from '@/entities/product'
+import Counter from '@/shared/ui/counter'
+import Button from '@/shared/ui/button'
 
 
 interface IProps {
@@ -42,6 +44,10 @@ export const ProductCard: FC<IProps> = ({product, toCartButton, toFavoritesButto
        </p>
        }
        <div className={styles.price} >{price} <span>{priceUnits}</span></div>
+       {inStock ?   <div className={styles.footer}> <Counter/> <div className={styles.toCartBtn} >{toCartButton}</div> </div> :
+         <div className={styles.footer}> <Button>Под заказ</Button> </div>
+       }
+     
        <div className={styles.favoritesBtn} >
         {toFavoritesButton}
        </div>

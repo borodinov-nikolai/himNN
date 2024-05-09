@@ -43,7 +43,7 @@
 }
 
 .infoPrice {
-    margin-top: 34px;
+    margin-top: 50px;
     font-size: 24px;
     color: rgba(78, 78, 78, 1);
     font-weight: 33px;
@@ -65,6 +65,10 @@
     align-items: center;
     gap: 14px;
     justify-content: center;
+    button {
+        width: 148px !important;
+        height: 32px !important;
+    }
 }
 
 

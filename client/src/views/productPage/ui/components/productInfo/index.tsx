@@ -7,6 +7,7 @@ import { Image } from 'antd'
 import Button from '@/shared/ui/button'
 import Counter from '@/shared/ui/counter'
 import { AddToFavoritesButton } from '@/features/addToFavoritesBtn'
+import { AddToCartButton } from '@/features/addToCartButton/ui'
 
 
 interface IProps {
@@ -28,11 +29,6 @@ const ProductInfo: FC<IProps> = ({product}) => {
                { name && <h3 className={styles.infoName} >
                 {name}
               </h3>}
-              <p className={styles.infoMore} >Подробнее <svg width="9" height="6" viewBox="0 0 9 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect x="3.95996" y="4.48004" width="6.33575" height="0.791969" transform="rotate(-45 3.95996 4.48004)" fill="#00B302"/>
-<rect x="4.48047" y="5.0401" width="6.33575" height="0.791969" transform="rotate(-135 4.48047 5.0401)" fill="#00B302"/>
-</svg>
-</p>
               {price && <p className={styles.infoPrice} >{price} { priceUnits && <span>{priceUnits}</span>}</p>}
               {inStock ? <p className={styles.infoInStock} > 
       <svg width="13" height="8" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -50,7 +46,7 @@ const ProductInfo: FC<IProps> = ({product}) => {
        </p>
        }
               <div className={styles.infoFooter} >
-                 <Counter/> <Button width='148px' height='32px' >В корзину</Button> <AddToFavoritesButton/>
+                 <Counter/> <AddToCartButton/> <AddToFavoritesButton/>
               </div>
 
             </div>

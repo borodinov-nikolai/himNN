@@ -1,6 +1,7 @@
 @import "../../../shared/styles/mixins/breakpoints";
 
 .root {
+    box-sizing: border-box;
     user-select: none;
     cursor: pointer;
     width: 100%;
@@ -8,13 +9,12 @@
     background: white;
     border-radius: 4px;
     padding: 25px 31px;
-    overflow: hidden;
     display: flex;
     flex-direction: column;
     align-items: center;
     position: relative;
-
     &:hover {
+        box-shadow: 0px 0px 0px 1px rgba(190, 190, 190, 1);;
         .favoritesBtn {
             display: block;
         }
@@ -77,7 +77,41 @@
     right: 7px;
 }
 
+.footer {
+    box-sizing: border-box;
+    background: white;
+    margin-top: 26px;
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+ 
+    button {
+        height: 32px !important;
+    }
+}
+
+.toCartBtn {
+
+    button {
+        width: 105px !important;
+        height: 32px !important;
+    }
+}
+
+
 @include breakpoint(xl) {
+
+    
+    .root {
+
+         &:hover {
+            .footer {
+                display: flex;
+            }
+         }
+    }
+
     .imageHolder {
         height: 170px;
         img {
@@ -85,4 +119,20 @@
             height: auto;
         }
     }
+
+
+    .footer {
+        margin: 0;
+        position: absolute;
+        bottom: -50px;
+        left: 0;
+        width: 100%;
+        display: none;
+        border-radius: 0 0 4px 4px;
+        padding-bottom: 26px;
+        z-index: 2;
+        box-shadow: 0px 1px 0px 1px rgba(190, 190, 190, 1);
+    }
+  
+    
 }

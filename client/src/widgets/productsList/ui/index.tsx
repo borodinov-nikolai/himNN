@@ -3,6 +3,7 @@ import styles from './ProductList.module.scss'
 import { ProductCard } from '@/entities/productCard'
 import { IProducts } from '@/entities/product'
 import { AddToFavoritesButton } from '@/features/addToFavoritesBtn'
+import { AddToCartButton } from '@/features/addToCartButton/ui'
 
 
 
@@ -16,7 +17,7 @@ export const ProductsList: FC<IProps> = ({products}) => {
     <ul className={styles.root} >
 
         {products?.data?.map(({id, attributes})=> 
-        <li key={id} ><ProductCard toFavoritesButton={<AddToFavoritesButton/>} product={ {data: {id, attributes}}} /></li>
+        <li key={id} ><ProductCard toCartButton={<AddToCartButton/>} toFavoritesButton={<AddToFavoritesButton/>} product={ {data: {id, attributes}}} /></li>
         )}
       
     </ul>
