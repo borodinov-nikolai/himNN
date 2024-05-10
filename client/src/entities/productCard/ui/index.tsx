@@ -1,5 +1,5 @@
 'use client'
-import React, { FC, ReactNode } from 'react'
+import React, { FC, ReactNode, useState } from 'react'
 import styles from './ProductCard.module.scss'
 import {imageUrl } from '@/entities/image'
 import Image from 'next/image'
@@ -10,12 +10,13 @@ import Button from '@/shared/ui/button'
 
 
 interface IProps {
-  toCartButton?: ReactNode
-  toFavoritesButton?: ReactNode
+  ToCartButton: React.JSX.ElementType
+  ToFavoritesButton: React.JSX.ElementType
   product?: IProduct
 }
 
-export const ProductCard: FC<IProps> = ({product, toCartButton, toFavoritesButton}) => {
+export const ProductCard: FC<IProps> = ({product, ToCartButton, ToFavoritesButton}) => {
+  const [count, setCount] = useState<number>(1)
   const router = useRouter()
   const {name, image, inStock, price, subcategory, category, priceUnits} = product?.data?.attributes || {}
   const imageHref = image?.data?.attributes?.url
@@ -44,12 +45,12 @@ export const ProductCard: FC<IProps> = ({product, toCartButton, toFavoritesButto
        </p>
        }
        <div className={styles.price} >{price} <span>{priceUnits}</span></div>
-       {inStock ?   <div className={styles.footer}> <Counter/> <div className={styles.toCartBtn} >{toCartButton}</div> </div> :
+       {inStock ?   <div className={styles.footer}> <Counter onChange={(value)=>setCount(value)} /> <div className={styles.toCartBtn} > <ToCartButton count={count} product={product} /></div> </div> :
          <div className={styles.footer}> <Button>Под заказ</Button> </div>
        }
      
        <div className={styles.favoritesBtn} >
-        {toFavoritesButton}
+        <ToFavoritesButton/>
        </div>
     </div>
   )

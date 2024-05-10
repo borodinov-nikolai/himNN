@@ -1,0 +1,22 @@
+
+
+
+
+.table {
+    width: 100%;
+    border-radius: 4px;
+    background: white;
+    color: rgba(190, 190, 190, 1);
+
+    th {
+        border-bottom: 1px solid rgba(190, 190, 190, 1);
+        text-align: start;
+    }
+    tr {
+        border-top: 1px solid rgba(190, 190, 190, 1);
+    }
+    td {
+        text-align: start;
+        vertical-align: center;
+    }
+}
