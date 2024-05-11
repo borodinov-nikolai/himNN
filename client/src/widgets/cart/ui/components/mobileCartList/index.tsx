@@ -21,7 +21,7 @@ const MobileCartList = () => {
           <li className={styles.listItem} key={id} >
             <div className={styles.listItem_leftSide} >
               <div className={styles.imageHolder} >
-                <Image src={imageUrl + image} width={400} height={400} alt='cart image' />
+                { image &&  <Image src={imageUrl + image} width={400} height={400} alt='cart image' />}
               </div>
               <Counter onChange={(value)=> dispatch(setCartItemCount({id, count: value}))} value={count} />
             </div>

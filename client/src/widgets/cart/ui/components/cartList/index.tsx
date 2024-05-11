@@ -33,7 +33,7 @@ const CartList = () => {
           {products?.map(({id, image, name, price, priceUnits, count})=>
             <tr key={id} >
                <td><div className={styles.preview} ><div className={styles.imageHolder} >
-                 <Image src={imageUrl + image} width={200} height={200} alt='product image'/>
+                 {image && <Image src={imageUrl + image} width={200} height={200} alt='product image'/>}
                </div> <p>{name}</p> </div></td>
                <td><div><Counter onChange={(value)=> dispatch(setCartItemCount({id, count:value}))} value={count}/></div></td>
                <td><div><span>{price}</span> <span>{priceUnits}</span> </div></td>

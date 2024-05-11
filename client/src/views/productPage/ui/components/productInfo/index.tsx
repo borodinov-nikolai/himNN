@@ -47,7 +47,7 @@ const ProductInfo: FC<IProps> = ({product}) => {
        </p>
        }
               <div className={styles.infoFooter} >
-                 <Counter onChange={(value)=> setCount(value)} /> <AddToCartButton count={count} product={product} /> <AddToFavoritesButton/>
+                 <Counter onChange={(value)=> setCount(value)} /> <AddToCartButton count={count} product={product} /> <AddToFavoritesButton product={product} />
               </div>
 
             </div>

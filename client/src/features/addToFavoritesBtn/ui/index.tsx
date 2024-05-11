@@ -23,7 +23,7 @@ export const AddToFavoritesButton: FC<IProps> = ({product, onChange}) => {
   const {name, price, priceUnits, image} = attributes || {}
   const imageUrl = image?.data?.attributes?.url
   const {products} = useAppSelector(selectFavorites)
-
+ 
  
 
   const handleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>)=> {

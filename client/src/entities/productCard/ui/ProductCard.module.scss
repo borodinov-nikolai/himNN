@@ -71,14 +71,11 @@
 
 .favoritesBtn {
 
-    display: none;  
+    display: block;  
     position: absolute;
     top: 7px;
     right: 7px;
 
-    &__active {
-        display: block;
-    }
 }
 
 .footer {
@@ -125,6 +122,12 @@
         }
     }
 
+    .favoritesBtn {
+        display: none;
+    &__active {
+        display: block;
+    }
+    }
 
     .footer {
         margin: 0;
