@@ -7,6 +7,7 @@ import { AntdRegistry } from "@ant-design/nextjs-registry";
 import { ConfigProvider } from "antd";
 import { Metadata } from "next";
 import { LoadCart } from "@/features/loadCart";
+import { LoadFavorites } from "@/features/loadFavorites";
 
 const nunito_Sans = Nunito_Sans({subsets: ["latin"]});
 
@@ -28,7 +29,7 @@ export default function RootLayout({
       <body className={nunito_Sans.className}>
         <ReduxProvider>
             <LoadCart/>
-            
+            <LoadFavorites/>
           <AntdRegistry>
             <ConfigProvider theme={{token: {
               colorPrimary: 'rgba(0, 179, 2, 1)'

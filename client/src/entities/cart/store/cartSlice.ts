@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
+import { stat } from "fs"
 
 
 
@@ -30,11 +31,26 @@ const initialState: ICartState = {
 
 
 
+
+
+
 const cartSlice = createSlice({
         name: 'cart',
         initialState,
         reducers: {
-                addToCart: (state, action: PayloadAction<Product>) => {
+                setCart: (state, action:PayloadAction<ICartState> )=> {
+                        const {products, totalCount, totalPrice} = action.payload
+                        state.products = products
+                        state.totalCount = totalCount
+                        state.totalPrice = totalPrice
+                },
+                clearCart: (state)=> {
+                      state.products = []
+                      state.totalCount = 0
+                      state.totalPrice = 0
+                      localStorage.removeItem('cart')
+                },
+                addCartItem: (state, action: PayloadAction<Product>) => {
                         const product = action.payload
                         const findedItem = state.products.find((item) => item.id === product.id)
 
@@ -55,14 +71,32 @@ const cartSlice = createSlice({
                         const cartString = JSON.stringify(state)
                         window.localStorage.setItem('cart', cartString)
                 },
-                setCart: (state, action:PayloadAction<ICartState> )=> {
-                        const {products, totalCount, totalPrice} = action.payload
-                        state.products = products
-                        state.totalCount = totalCount
-                        state.totalPrice = totalPrice
+           
+                removeCartItem: (state, action: PayloadAction<{id: number}>)=> {
+                        const filteredArray = state.products.filter((item)=> item.id !== action.payload.id)
+                        state.products = filteredArray
+                        state.totalCount = state.products.reduce((sum, item) => sum + item.count, 0)
+                        state.totalPrice = state.products.reduce((sum, item) => sum + (item.price * item.count), 0)
+                        const cartString = JSON.stringify(state)
+                        window.localStorage.setItem('cart', cartString)
+                },
+
+                setCartItemCount:(state, action: PayloadAction<{id: number, count: number}>)=> {
+                        const {id, count} = action.payload
+                       const newArray = state.products.map((item)=> {
+                        if(item.id === id) {
+                             item.count = count
+                        }
+                        return item
+                       })
+                       state.products = newArray
+                       state.totalCount = state.products.reduce((sum, item) => sum + item.count, 0)
+                       state.totalPrice = state.products.reduce((sum, item) => sum + (item.price * item.count), 0)
+                       const cartString = JSON.stringify(state)
+                       window.localStorage.setItem('cart', cartString)
                 }
         }
 })
 
-export const { addToCart, setCart} = cartSlice.actions
+export const { addCartItem, setCart, removeCartItem, setCartItemCount, clearCart} = cartSlice.actions
 export default cartSlice.reducer

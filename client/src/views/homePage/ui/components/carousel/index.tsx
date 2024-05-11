@@ -7,6 +7,7 @@ import cs from 'classnames';
 import Button from '@/shared/ui/button';
 import 'swiper/css';
 import 'swiper/css/pagination';
+import { useRouter } from 'next/navigation';
 
 
 
@@ -48,50 +49,45 @@ const slidesList: Slide[] = [
 
 
 const Carousel = () => {
-
+const router = useRouter()
     return (
-        <Swiper
-        className={styles.root}
-         modules={[Autoplay, Pagination]}
-           spaceBetween={0}
-            navigation={true}
-            autoplay={{
-                delay: 4000,
-                disableOnInteraction: false
-            }}
-            speed={800}
-            slidesPerView={'auto'}
-            pagination={{
-                clickable: true,
-            }}
-            loop={true}
-        >
-           {slidesList?.map(({id, title, description, image})=> <SwiperSlide style={{backgroundImage: `url(${image})`}} key={id} className={styles.slide} >
-                
-                <div className={styles.slideContent} >
-                    <div className={cs('container', styles.slideContent_inner)} >
-                        <h2>{title}</h2>
-                        <ul>
-                            {description.map((item, i)=> 
-                            <li key={i} >{item}</li>
-                            )}
-                        </ul>
-                        <Button>Перейти в каталог</Button>
-                        
+        <div className={styles.root} >
+            <Swiper
+             className={styles.swiper}
+             modules={[Autoplay, Pagination]}
+               spaceBetween={0}
+                navigation={true}
+                autoplay={{
+                    delay: 4000,
+                    disableOnInteraction: false
+                }}
+                speed={800}
+                slidesPerView={'auto'}
+                pagination={{
+                    clickable: true,
+                }}
+                loop={true}
+            >
+               {slidesList?.map(({id, title, description, image})=> <SwiperSlide style={{backgroundImage: `url(${image})`}} key={id} className={styles.slide} >
+            
+                    <div className={styles.slideContent} >
+                        <div className={cs('container', styles.slideContent_inner)} >
+                            <h2>{title}</h2>
+                            <ul>
+                                {description.map((item, i)=>
+                                <li key={i} >{item}</li>
+                                )}
+                            </ul>
+                            <Button onClick={()=> router.push('/catalog')} >Перейти в каталог</Button>
+            
+                        </div>
                     </div>
-                </div>
-                
-          <div className={styles.mask} ></div>
-              
-                </SwiperSlide>) }
-
-
-  
-  
-  
-
-
-        </Swiper>
+            
+              <div className={styles.mask} ></div>
+            
+                    </SwiperSlide>) }
+            </Swiper>
+        </div>
     );
 
 

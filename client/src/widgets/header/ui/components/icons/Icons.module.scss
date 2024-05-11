@@ -1,0 +1,22 @@
+@import '../../../../../shared/styles/mixins/breakpoints';
+
+
+
+.root {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    >li {
+        cursor: pointer;
+        >svg {
+            width: 28px;
+            height: 28px;
+        }
+    }
+}
+
+@include breakpoint(xl) {
+    .burger {
+        display: none;
+    }
+}

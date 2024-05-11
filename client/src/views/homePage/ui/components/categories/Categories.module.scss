@@ -77,6 +77,10 @@
 
 
 @include breakpoint(sm) {
+
+    .imageHolder {
+        width: max-content;
+    }
     .content {
        >h3 {
         width: 100%;

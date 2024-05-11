@@ -58,8 +58,8 @@ export const Filters: FC<IProps> = ({ filters, allProducts, products, onConfirm 
         inStock: inStock ? {
           $eq: true
         } : undefined,
-        $and: characteristics ? characteristics.map(({ name, values }) => {
-          if (name && values.length > 0) {
+        $and: characteristics?.length > 0 ? characteristics?.map(({ name, values }) => {
+          if (name && values?.length > 0) {
             return {
               characteristics: {
                 name: {
@@ -76,7 +76,7 @@ export const Filters: FC<IProps> = ({ filters, allProducts, products, onConfirm 
     })
     router.replace(`?${quertString}`)
 
-  }, [debouncedPrice, inStock, characteristics])
+  }, [debouncedPrice, inStock, characteristics, price])
 
 
 

@@ -1,0 +1,97 @@
+@import '../../../../shared/styles/mixins/breakpoints';
+
+
+
+
+
+.root {
+    padding-top: 20px;
+}
+
+.title {
+    font-weight: 600;
+    line-height: 32px;
+    font-size: 24px;
+    
+}
+
+.header {
+    margin-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navigation {
+    display: flex;
+    gap: 14px;
+    font-size: 18px;
+    line-height: 25px;
+    color: rgba(78, 78, 78, 1);
+    p:last-child {
+        color: rgba(0, 179, 2, 1);
+    }
+}
+
+.clearBtn {
+    cursor: pointer;
+    border-radius: 2px;
+    background: white;
+    border: 1px solid rgba(190, 190, 190, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 32px;
+    font-size: 14px;
+    line-height: 19px;
+    color: rgba(190, 190, 190, 1);
+    gap: 6px;
+    
+    svg {
+        width: 7px;
+        height: auto;
+    }
+}
+
+
+.mobileFavoritesList {
+    margin-top: 34px;
+}
+
+.favoritesList {
+    margin-top: 34px;
+    display: none;
+}
+
+
+
+
+
+
+
+
+
+@include breakpoint(md) {
+    .favoritesList {
+        display: block;
+    }
+
+    .mobileFavoritesList {
+        display: none;
+    }
+    .clearBtn {
+        width: 148px;
+    }
+
+}
+
+@include breakpoint(xl) {
+    .root {
+        padding-top: 4px;
+    }
+
+    .title {
+        margin-top: 24px;
+    }
+}

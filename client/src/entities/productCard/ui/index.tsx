@@ -1,5 +1,5 @@
 'use client'
-import React, { FC, ReactNode, useState } from 'react'
+import React, { FC, useState } from 'react'
 import styles from './ProductCard.module.scss'
 import {imageUrl } from '@/entities/image'
 import Image from 'next/image'
@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation'
 import { IProduct } from '@/entities/product'
 import Counter from '@/shared/ui/counter'
 import Button from '@/shared/ui/button'
-
+import cs from 'classnames'
 
 interface IProps {
   ToCartButton: React.JSX.ElementType
@@ -17,6 +17,7 @@ interface IProps {
 
 export const ProductCard: FC<IProps> = ({product, ToCartButton, ToFavoritesButton}) => {
   const [count, setCount] = useState<number>(1)
+  const [inFavorites, setInFavorites] = useState<boolean>()
   const router = useRouter()
   const {name, image, inStock, price, subcategory, category, priceUnits} = product?.data?.attributes || {}
   const imageHref = image?.data?.attributes?.url
@@ -45,12 +46,12 @@ export const ProductCard: FC<IProps> = ({product, ToCartButton, ToFavoritesButto
        </p>
        }
        <div className={styles.price} >{price} <span>{priceUnits}</span></div>
-       {inStock ?   <div className={styles.footer}> <Counter onChange={(value)=>setCount(value)} /> <div className={styles.toCartBtn} > <ToCartButton count={count} product={product} /></div> </div> :
-         <div className={styles.footer}> <Button>Под заказ</Button> </div>
+       {inStock ?   <div className={styles.footer}> <Counter onChange={(value)=> setCount(value)} /> <div className={styles.toCartBtn} > <ToCartButton count={count} product={product} /></div> </div> :
+         <div className={styles.footer}> <Button onClick={(e)=> e.stopPropagation()} >Под заказ</Button> </div>
        }
      
-       <div className={styles.favoritesBtn} >
-        <ToFavoritesButton/>
+       <div className={cs(styles.favoritesBtn, inFavorites && styles.favoritesBtn__active)} >
+        <ToFavoritesButton onChange={(value: boolean)=> setInFavorites(value)} product={product} />
        </div>
     </div>
   )

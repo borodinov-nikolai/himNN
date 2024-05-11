@@ -9,15 +9,21 @@ export const LoadCart = () => {
 const dispatch = useAppDispatch()
 
     useEffect(()=> {
-
-
-            const cartString = window.localStorage.getItem('cart')
+      const loadCartFromLocalStorage = ()=>  {
+        const cartString = window.localStorage.getItem('cart')
             
+        if(cartString) {
+          try {
             const cart = cartString && JSON.parse(cartString)
-            console.log(cart)
             dispatch(setCart(cart))
-        
-
+          } catch(e) {
+            console.error(e)
+          }
+        }  
+      }
+              
+      loadCartFromLocalStorage()  
+                
     }, [])
 
   return (

@@ -9,7 +9,7 @@ export const getAllProducts = async (queryParams:{searchParams: Record<string, s
     const query = searchParams ? qs.stringify(searchParams) : undefined
 
     try {
-        const {data}: {data: IProducts} = await $serverApi(params ? `/products?${query}&filters[${params.name}][href][$eq]=${params.value}&populate[0]=image&populate[1]=subcategory.image&populate[2]=category&sort=price:asc`: '/products?sort=price:asc')
+        const {data}: {data: IProducts} = await $serverApi(params ? `/products?${query? query: ""}&filters[${params.name}][href][$eq]=${params.value}&populate[0]=image&populate[1]=subcategory.image&populate[2]=category&sort=price:asc`: '/products?sort=price:asc')
         return data
     } catch(e) {
         console.error(e)

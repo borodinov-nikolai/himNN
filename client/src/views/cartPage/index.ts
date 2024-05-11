@@ -1,1 +1,1 @@
-export {CartPage} from './ui/root'
+export {CartPage} from './ui'

@@ -2,7 +2,7 @@
 import { imageUrl } from '@/entities/image'
 import styles from './ProductInfo.module.scss'
 import { IProduct } from '@/entities/product'
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import { Image } from 'antd'
 import Button from '@/shared/ui/button'
 import Counter from '@/shared/ui/counter'
@@ -15,6 +15,7 @@ interface IProps {
 }
 
 const ProductInfo: FC<IProps> = ({product}) => {
+  const [count, setCount] = useState<number>(1)
   const {name, image, price, inStock, priceUnits} = product?.data?.attributes || {}
   const imageHref = image?.data?.attributes?.url
   return (
@@ -46,7 +47,7 @@ const ProductInfo: FC<IProps> = ({product}) => {
        </p>
        }
               <div className={styles.infoFooter} >
-                 <Counter/> <AddToCartButton/> <AddToFavoritesButton/>
+                 <Counter onChange={(value)=> setCount(value)} /> <AddToCartButton count={count} product={product} /> <AddToFavoritesButton/>
               </div>
 
             </div>

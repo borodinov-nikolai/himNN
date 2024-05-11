@@ -1,9 +1,12 @@
+import { Favorites } from '@/widgets/favorites'
 import React from 'react'
-import styles from './FavoritesPage.module.scss'
+
 
 
 export const FavoritesPage = () => {
   return (
-    <main>FavoritesPage</main>
+    <main>
+      <Favorites/>
+    </main>
   )
 }
