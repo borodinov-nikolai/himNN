@@ -1,0 +1,110 @@
+@import '../../../../../shared/styles/mixins/breakpoints';
+
+
+
+.table {
+    width: 100%;
+    border-radius: 4px;
+    background: white;
+    font-size: 14px;
+    thead {
+        th {
+            color: rgba(190, 190, 190, 1);
+            border-bottom: 1px solid rgba(190, 190, 190, 1);
+            text-align: start;
+            padding: 20px 5px;
+        }
+
+        th:first-child {
+            padding-left: 20px;
+        }
+
+        th:last-child {
+            padding-right: 20px;
+        }
+    }
+
+    tbody {
+        tr {
+            border-top: 1px solid rgba(190, 190, 190, 1);
+        }
+        td {
+            text-align: start;
+            vertical-align: middle;
+            > div {
+                display: flex;
+                align-items: center;
+                height: 117px;
+                padding: 30px 5px;
+                width: max-content;
+            }
+        }
+    }
+}
+
+.preview {
+    width: max-content;
+    padding-left: 20px !important;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: flex-start;
+
+    p {
+        width: 120px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+.imageHolder {
+    width: 75px;
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+
+
+
+@include breakpoint(lg) {
+    .table {
+        font-size: 16px;
+    }
+
+    .preview {
+        p {
+            width: 174px;
+        }
+    }
+  
+}
+
+@include breakpoint(xl) {
+    .table {
+        thead {
+            th:first-child {
+                padding-left: 44px;
+            }
+
+            th:last-child {
+                padding-right: 44px;
+            }
+        }
+    }
+
+    .preview {
+        padding-left: 44px !important;
+    }
+
+    .imageHolder {
+        width: 75px;
+    }
+
+}

@@ -1,0 +1,120 @@
+@import '../../../../shared/styles/mixins/breakpoints';
+
+
+.root {
+    padding-top: 20px;
+}
+
+.title {
+    font-size: 24px;
+    line-height: 32px;
+    color: rgba(78, 78, 78, 1);
+    font-weight: 600;
+}
+
+.content {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: max-content;
+    row-gap: 20px;
+}
+
+.orderList {
+    display: none;
+}
+
+
+.orderInfo {
+    background: white;
+    border-radius: 4px;
+    width: 100%;
+    height: 280px;
+    grid-row: 1;
+}
+
+.orderInfo_header {
+    display: flex;
+    justify-content: space-between;
+    padding: 32px 22px;
+    border-bottom: 1px solid rgba(217, 217, 217, 1);
+    >p {
+        font-size: 16px;
+        font-weight: 700;
+        color: rgba(78, 78, 78, 1);
+    }
+  
+    a {
+        font-size: 14px;
+        color: rgba(0, 179, 2, 1);
+    }
+}
+
+.orderInfo_body {
+    display: flex;
+    flex-direction: column;
+    padding: 32px 22px;
+    color: rgba(78, 78, 78, 1);
+}
+
+.orderInfo_prices {
+    border-bottom: 1px solid rgba(217, 217, 217, 1);
+    padding-bottom: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    font-size: 16px;
+
+}
+
+.orderInfo_total {
+    font-weight: 700;
+    margin-top: 32px;
+}
+
+.mobileOrderList {
+    grid-row: 2;
+}
+
+.orderForm {
+    grid-row: 3;
+}
+
+@include breakpoint(md) {
+
+    .content {
+        grid-template-columns: 1fr max-content;
+        column-gap: 24px;
+    }
+    .orderList {
+        display: block;
+        grid-row: 1;
+        grid-column: 1;
+    }
+
+    .orderInfo {
+        width: 231px;
+        grid-row: 1;
+        grid-column: 2;
+    }
+
+    .mobileOrderList {
+        display: none;
+    }
+}
+
+
+@include breakpoint(xl) {
+
+    .root {
+
+        padding-top: 4px;
+    }
+
+    .title {
+        margin-top: 24px;
+    }
+    
+   
+
+}

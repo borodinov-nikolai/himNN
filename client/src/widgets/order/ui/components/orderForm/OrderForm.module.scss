@@ -1,0 +1,25 @@
+@import '../../../../../shared/styles/mixins/breakpoints';
+
+
+.root {
+    background: white;
+    padding: 26px 14px;
+    border-radius: 4px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid rgba(217, 217, 217, 1);
+    padding-bottom: 26px;
+    >p {
+        font-size: 18px;
+        font-weight: 600;
+        color: rgba(0, 179, 2, 1);
+    }
+}
+
+.personType {
+    margin-top: 26px;
+}

@@ -19,7 +19,7 @@ export const CategoryPage = async ({categoryName, searchParams}: {categoryName :
   const products = await getAllProducts({params: {name: 'category', value: categoryName}, searchParams})
   const allProducts = await getAllProducts()
 
-   
+  
   return (
     <main className={styles.root} >
       <div className='container' >
@@ -30,10 +30,10 @@ export const CategoryPage = async ({categoryName, searchParams}: {categoryName :
           <div className={styles.content}>
               <MobileFilters products={products} allProducts={allProducts}  filters={filters} />
             <div className={styles.categories} >
-              <SubcategoriesList products={products} />
+              {products && <SubcategoriesList products={products} />}
             </div>
             <div className={styles.products} >
-              <ProductsList products={products} />
+             {products && <ProductsList products={products} />}
             </div>
              </div>
         </div>
