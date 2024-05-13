@@ -8,8 +8,9 @@ import cs from 'classnames'
 import Button from '@/shared/ui/button'
 import ConfirmedIcon from '@/shared/icons/confirmed'
 import { useSendOrderMutation } from '@/entities/order/api'
-import { useAppSelector } from '@/shared/hooks/redux'
-import { selectCart } from '@/entities/cart'
+import { useAppDispatch, useAppSelector } from '@/shared/hooks/redux'
+import { clearCart, selectCart } from '@/entities/cart'
+import { useRouter } from 'next/navigation'
 
 
 interface IFields {
@@ -20,10 +21,19 @@ interface IFields {
   company_name: string,
   legal_address: string,
   inn: string
+  kpp: string
+  bik: string
+  checking_account: string
+  bank_for_rc: string
+  bank_town: string
+  correspondent_account: string
+  contact_person: string
 }
 
 
 const OrderForm = () => {
+  const router = useRouter()
+  const dispatch = useAppDispatch()
   const [person, setPerson] = useState<string>('person')
   const [confirmation, setConfirmation ] = useState<boolean>(false)
   const [confirmed, setConfirmed] = useState<boolean>(false)
@@ -38,38 +48,87 @@ const OrderForm = () => {
       comment: '',
       company_name: '',
       legal_address: '',
-      inn: ''
+      inn: '',
+      kpp: '',
+      bik: '',
+      checking_account: '',
+      bank_for_rc: '',
+      bank_town: '',
+      correspondent_account: '',
+      contact_person: ''
+
     }
   })
 
 
   const onSubmit: SubmitHandler<IFields> = (data) => {
-    const {name, phone, email, comment} = data || {}
+    const {name, phone, email, comment, company_name, legal_address, inn, bik, kpp, checking_account, bank_for_rc, bank_town, correspondent_account, contact_person} = data || {}
     setConfirmation(true)
     if(!confirmed && confirmation) {
       setConfirmationError(true)
       
     } else if(confirmed && confirmation) {
-      console.log('send')
       const date = new Date()
       const day = date.getDate()
       const month = date.getMonth() + 1
       const year = date.getFullYear()
-      const fullDate = `${day}.${month}.${year}`
-  
+      const hours = date.getHours().toString().padStart(2, '0');
+      const minutes = date.getMinutes().toString().padStart(2, '0');
+      const seconds = date.getSeconds().toString().padStart(2, '0');
+      const fullDate = `${day}.${month}.${year} ${hours}.${minutes}.${seconds}`
+       
 
-       const personMessage = `
+       const personMessagePart =
+       `Тип закачика: Физическое лицо
        Ф.И.О: ${name}
        Телефон: ${phone}
-       email: ${email}
-       комментарий: ${comment}
+       E-mail: ${email}
+       Комментарий: ${comment}`
+
+       const legalEntityMessagePart = 
+       `Тип заказчика: Юридическое лицо
+       Название компании: ${company_name}
+       Юридический адрес: ${legal_address}
+       ИНН: ${inn}
+       КПП: ${kpp}
+       БИК: ${bik}
+       Расчетный счет: ${checking_account}
+       Банк для р/с: ${bank_for_rc}
+       Город банка для р/с: ${bank_town}
+       Корреспондентский счет: ${correspondent_account}
+       Контактное лицо: ${contact_person}
+       E-mail: ${email}
+       Телефон: ${phone}
+       Комментарий: ${comment}
        `
+
+       const productsMessagePart =
+        `товары:
+          ${cart?.products?.map(({name, price, priceUnits, count})=>
+         `
+          Название: ${name}
+          Цена: ${price} ${priceUnits}
+          Количество: ${count}
+          -------------------------------`
+      ).join('')}
+
+      Всего товаров: ${cart?.totalCount}
+      На сумму: ${cart?.totalPrice} руб.
+      ` 
 
       const message = 
       `Заказ от ${fullDate}
-       ${personMessage}
+
+       ${person === 'person' ? personMessagePart : legalEntityMessagePart}
+
+       ${productsMessagePart}
       `
       sendOrder(message)
+      reset()
+      clearErrors()
+      window.localStorage.removeItem('cart')
+      dispatch(clearCart())
+      router.replace('/')
     }
   }
 
@@ -153,38 +212,38 @@ const OrderForm = () => {
               </div>
 
               <div className={styles.formItem} >
-                <label htmlFor="inn">КПП</label>
-                <input id='inn' {...register('inn')} type="text" />
+                <label htmlFor="kpp">КПП</label>
+                <input id='kpp' {...register('kpp')} type="text" />
                
               </div>
               <div className={styles.formItem} >
-                <label htmlFor="inn">БИК</label>
-                <input id='inn' {...register('inn')} type="text" />
+                <label htmlFor="bik">БИК</label>
+                <input id='bik' {...register('bik')} type="text" />
                
               </div>
               <div className={styles.formItem} >
-                <label htmlFor="inn">Расчетный счет</label>
-                <input id='inn' {...register('inn')} type="text" />
+                <label htmlFor="checking_account">Расчетный счет</label>
+                <input id='checking_account' {...register('checking_account')} type="text" />
                
               </div>
               <div className={styles.formItem} >
-                <label htmlFor="inn">Банк для р/с</label>
-                <input id='inn' {...register('inn')} type="text" />
+                <label htmlFor="bank_for_rc">Банк для р/с</label>
+                <input id='bank_for_rc' {...register('bank_for_rc')} type="text" />
                
               </div>
               <div className={styles.formItem} >
-                <label htmlFor="inn">Город банка для р/с</label>
-                <input id='inn' {...register('inn')} type="text" />
+                <label htmlFor="bank_town">Город банка для р/с</label>
+                <input id='bank_town' {...register('bank_town')} type="text" />
                
               </div>
               <div className={styles.formItem} >
-                <label htmlFor="inn">Корреспондентский счет</label>
-                <input id='inn' {...register('inn')} type="text" />
+                <label htmlFor="correspondent_account">Корреспондентский счет</label>
+                <input id='correspondent_account' {...register('correspondent_account')} type="text" />
                
               </div>
               <div className={styles.formItem} >
-                <label htmlFor="inn">Контактное лицо</label>
-                <input id='inn' {...register('inn', {required: 'Это поле обязательно'})} type="text" />
+                <label htmlFor="contact_person">Контактное лицо</label>
+                <input id='contact_person' {...register('contact_person', {required: 'Это поле обязательно'})} type="text" />
                 <p className={styles.error} >{errors.inn?.message}</p>
               </div>
               <div className={styles.formItem} >
