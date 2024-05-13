@@ -8,11 +8,12 @@ interface IProps {
   height?: string
   children?: ReactNode
   onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>)=> void
+  type?: 'button' | 'reset' | 'submit'
 }
 
-const Button: FC<IProps> = ({width="200px", height="40px", children, onClick}) => {
+const Button: FC<IProps> = ({width="200px", height="40px", children, onClick, type}) => {
   return (
-    <button onClick={ (e)=> onClick ? onClick(e) : null} style={{width, height}} className={styles.root} >{children}</button>
+    <button type={type} onClick={ (e)=> onClick ? onClick(e) : null} style={{width, height}} className={styles.root} >{children}</button>
   )
 }
 

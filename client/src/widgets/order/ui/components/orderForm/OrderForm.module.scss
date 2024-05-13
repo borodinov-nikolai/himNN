@@ -2,6 +2,8 @@
 
 
 .root {
+    display: flex;
+    flex-direction: column;
     background: white;
     padding: 26px 14px;
     border-radius: 4px;
@@ -20,6 +22,161 @@
     }
 }
 
+
+.body {
+    max-width: 439px;
+    padding: 0 32px;
+}
+
 .personType {
     margin-top: 26px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    >p {
+        font-size: 14px;
+        line-height: 19px;
+        color: rgba(0, 0, 0, 1);
+    }
+}
+
+.persontType_radioGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.inputs {
+    margin-top: 26px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    input {
+        height: 43px;
+        border-radius: 2px;
+        border: none;
+        background: rgba(234, 234, 234, 1);
+        padding: 0 10px;
+        &:focus {
+            outline: none
+        }
+    }
+    textarea {
+        resize: none;
+        border-radius: 2px;
+        border: none;
+        background: rgba(234, 234, 234, 1);
+        padding: 10px 10px;
+        &:focus {
+            outline: none
+        }
+    }
+}
+
+.formItem {
+   display: flex;
+   gap: 10px;
+   flex-direction: column;
+}
+
+.nextBtn {
+    align-self: flex-end;
+    button {
+     width: 107px !important;
+     height: 32px !important;
+     font-size: 14px;
+     margin-top: 26px;
+    }
+
+}
+
+
+.error {
+    font-size: 12px;
+    line-height: 1;
+    color: red;
+}
+
+.confirmationHeader {
+    background: white;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    div:first-child {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    padding: 26px 14px;
+    p {
+        font-size: 18px;
+        font-weight: 600;
+        color: rgba(0, 179, 2, 1);
+    }
+
+    button {
+        background: none;
+        cursor: pointer;
+        color: rgba(0, 179, 2, 1);
+        border: none;
+        font-size: 14px;
+    }
+}
+
+.confirmationText {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    color: rgba(0, 0, 0, 1);
+}
+
+.confirmBtn {
+    margin-top: 30px;
+    button {
+        font-size: 14px;
+        width: 100% !important;
+        height: 38px !important;
+    }
+
+}
+
+@include breakpoint(sm) {
+    .confirmBtn{
+
+        button {
+          width: 160px !important;
+          height: 32px !important;
+        }
+  }
+}
+
+
+@include breakpoint(lg) {
+   
+   
+    .persontType_radioGroup {
+        flex-direction: row;
+    }
+
+
+
+}
+
+@include breakpoint(xl) {
+    .root {
+        padding: 26px 62px;
+    }
+
+    .header {
+        gap: 16px;
+    }
+
+    .confirmationHeader {
+        padding: 26px 54px;
+
+        div:first-child {
+            gap: 24px;
+        }
+    }
 }
