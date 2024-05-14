@@ -8,6 +8,7 @@ import Link from 'next/link'
 import Button from '@/shared/ui/button'
 import { ICategories } from '@/entities/category'
 import useWindowWidth from '@/shared/hooks/useWindowWidth'
+import { RequestACallBtn } from '@/features/recuestACallBtn'
 
 
 interface IProps {
@@ -57,10 +58,7 @@ const MobileMenu: FC<IProps> = ({ categories }) => {
             </button>
           </div>
 
-          <div className={styles.search}  >
-            <input placeholder='поиск' type="text" />
-            <Image src={'/icons/search.png'} width={24} height={24} alt='search icon' />
-          </div>
+
 
           <div onClick={() => setCatalogOpen(!catalogOpen)} className={cs(styles.menuItem, styles.catalog, catalogOpen && styles.catalog__open)} >
             <p>Каталог</p>
@@ -91,7 +89,7 @@ const MobileMenu: FC<IProps> = ({ categories }) => {
             г. Нижний Новгород, ул. Кузбасская, д.1Ж, офис 405
           </div>
 
-          <div className={styles.successBtn}><Button width='100%' height='43px' >Заказать звонок</Button></div>
+          <div className={styles.successBtn}><RequestACallBtn>Заказать звонок</RequestACallBtn></div>
         </div>
       </Drawer>
 

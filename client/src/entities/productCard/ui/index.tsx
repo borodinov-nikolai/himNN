@@ -6,16 +6,16 @@ import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { IProduct } from '@/entities/product'
 import Counter from '@/shared/ui/counter'
-import Button from '@/shared/ui/button'
 import cs from 'classnames'
 
 interface IProps {
   ToCartButton: React.JSX.ElementType
   ToFavoritesButton: React.JSX.ElementType
+  RecuestACallButton: React.JSX.ElementType
   product?: IProduct
 }
 
-export const ProductCard: FC<IProps> = ({product, ToCartButton, ToFavoritesButton}) => {
+export const ProductCard: FC<IProps> = ({product, ToCartButton, ToFavoritesButton, RecuestACallButton}) => {
   const [count, setCount] = useState<number>(1)
   const [inFavorites, setInFavorites] = useState<boolean>()
   const router = useRouter()
@@ -47,7 +47,9 @@ export const ProductCard: FC<IProps> = ({product, ToCartButton, ToFavoritesButto
        }
        <div className={styles.price} >{price} <span>{priceUnits}</span></div>
        {inStock ?   <div className={styles.footer}> <Counter onChange={(value)=> setCount(value)} /> <div className={styles.toCartBtn} > <ToCartButton count={count} product={product} /></div> </div> :
-         <div className={styles.footer}> <Button onClick={(e)=> e.stopPropagation()} >Под заказ</Button> </div>
+         <div className={styles.footer}> <div onClick={(e)=> e.stopPropagation()} className={styles.requsetACallbtn} >
+           <RecuestACallButton>Под заказ</RecuestACallButton>
+         </div> </div>
        }
      
        <div className={cs(styles.favoritesBtn, inFavorites && styles.favoritesBtn__active)} >

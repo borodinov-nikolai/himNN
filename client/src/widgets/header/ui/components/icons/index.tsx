@@ -8,9 +8,9 @@ import { Badge } from 'antd'
 import { useAppSelector } from '@/shared/hooks/redux'
 import CartIcon from '@/shared/icons/cart'
 import FavoritesIcon from '@/shared/icons/favorites'
-import SearchIcon from '@/shared/icons/search'
 import { selectFavorites } from '@/entities/favorites'
 import { selectCart } from '@/entities/cart'
+import { Search } from '@/features/search'
 
 
 const Icons = ({categories}: {categories?: ICategories}) => {
@@ -19,7 +19,7 @@ const Icons = ({categories}: {categories?: ICategories}) => {
   return (
     <ul className={styles.root} >
     <li>
-    <SearchIcon/>
+      <Search/>
     </li>
     <Badge color='rgba(0, 179, 2, 1)' size='small' count={favorites.products.length} >
       <li>

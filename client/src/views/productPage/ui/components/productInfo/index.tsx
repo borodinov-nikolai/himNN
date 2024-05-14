@@ -8,6 +8,7 @@ import Button from '@/shared/ui/button'
 import Counter from '@/shared/ui/counter'
 import { AddToFavoritesButton } from '@/features/addToFavoritesBtn'
 import { AddToCartButton } from '@/features/addToCartButton/ui'
+import { RequestACallBtn } from '@/features/recuestACallBtn'
 
 
 interface IProps {
@@ -47,7 +48,7 @@ const ProductInfo: FC<IProps> = ({product}) => {
        </p>
        }
               <div className={styles.infoFooter} >
-                 <Counter onChange={(value)=> setCount(value)} /> {inStock ? <AddToCartButton count={count} product={product} /> :  <Button>Под заказ</Button>} <AddToFavoritesButton product={product} />
+                 <Counter onChange={(value)=> setCount(value)} /> {inStock ? <AddToCartButton count={count} product={product} /> :  <RequestACallBtn>Под заказ</RequestACallBtn>} <AddToFavoritesButton product={product} />
               </div>
 
             </div>

@@ -2,15 +2,15 @@
 import React, {useState } from 'react'
 import styles from './OrderForm.module.scss'
 import ProfileIcon from '@/shared/icons/profile'
-import { Checkbox, Radio } from 'antd'
+import { Checkbox, Modal, Radio, Result } from 'antd'
 import {SubmitHandler, useForm } from 'react-hook-form'
 import cs from 'classnames'
 import Button from '@/shared/ui/button'
 import ConfirmedIcon from '@/shared/icons/confirmed'
-import { useSendOrderMutation } from '@/entities/order/api'
 import { useAppDispatch, useAppSelector } from '@/shared/hooks/redux'
 import { clearCart, selectCart } from '@/entities/cart'
 import { useRouter } from 'next/navigation'
+import { useSendMessageMutation } from '@/entities/telegramBot'
 
 
 interface IFields {
@@ -37,8 +37,9 @@ const OrderForm = () => {
   const [person, setPerson] = useState<string>('person')
   const [confirmation, setConfirmation ] = useState<boolean>(false)
   const [confirmed, setConfirmed] = useState<boolean>(false)
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
   const [confirmationError, setConfirmationError ] = useState<boolean>(false)
-  const [sendOrder] = useSendOrderMutation()
+  const [sendOrder] = useSendMessageMutation()
   const cart = useAppSelector(selectCart)
   const { register, handleSubmit, formState: { errors}, reset, clearErrors} = useForm({
     defaultValues: {
@@ -128,7 +129,8 @@ const OrderForm = () => {
       clearErrors()
       window.localStorage.removeItem('cart')
       dispatch(clearCart())
-      router.replace('/')
+      setConfirmation(false)
+      setIsModalOpen(true)
     }
   }
 
@@ -273,6 +275,15 @@ const OrderForm = () => {
 
       </div>
       <div className={styles.nextBtn} ><Button  type='submit' >Далее</Button></div>
+      <Modal closeIcon={false} footer={false} className={styles.modal} title='Оформление заказа' open={isModalOpen} >
+        <div><Result
+        status={'success'}
+        title={'Запрос успешно отправлен! Наши менеджеры свяжутся с Вами в ближайшее время.'}
+        
+        />
+               <Button width='100%' height='43px' onClick={()=>{ setIsModalOpen(false); router.replace('/')}} >Продолжить</Button>
+        </div>
+      </Modal>
     </form>
 
 

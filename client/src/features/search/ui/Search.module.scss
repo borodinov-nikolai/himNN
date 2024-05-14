@@ -1,0 +1,125 @@
+@import '../../../shared/styles/mixins/breakpoints';
+
+
+
+.content {
+    cursor: default;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background :rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    overflow: auto;
+}
+
+ .contentInner {
+    position: relative;
+ }
+
+ .closeBtn {
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    height: 12px;
+    width: 12px;
+    svg {
+        height: 100%;
+        width: auto;
+        fill: rgba(78, 78, 78, 1);
+    }
+ }
+
+ .contentHeader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 91px;
+    width: 100%;
+    background: var(--background-color);
+
+ }
+
+ .searchInput {
+    position: relative;
+    
+    input {
+        width: 300px;
+        height: 32px;
+        background: white;
+        padding: 0 13px;
+        padding-right: 50px;
+        border-radius: 4px;
+        border: none;
+
+
+        &:focus {
+            outline: none;
+        }
+        &::placeholder {
+            color: rgba(190, 190, 190, 1);
+        }
+    }
+
+    svg {
+        position: absolute;
+        right: 13px;
+        top: 50%;
+        translate: 0 -50%;
+        height: 24px;
+        width: 24px;
+        path {
+            stroke: rgba(190, 190, 190, 1);
+        }
+    }
+ }
+
+
+ .searchList {
+    padding: 40px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    color: white;
+    z-index: 1001;
+    font-size: 16px;
+ }
+
+ @include breakpoint(sm) {
+
+
+   
+    .searchInput {
+        input {
+            width: 411px;
+            height: 48px;
+        }
+    }
+
+    .closeBtn {
+        top: 20px;
+        right: 20px;
+        width: 16px;
+        height: 16px;
+    }
+
+    .searchList {
+        font-size: 18px;
+    }
+
+ }
+
+
+ @include breakpoint(xl) {
+    .contentHeader {
+        height: 178px;
+    }
+
+    .searchList {
+        font-size: 24px;
+    }
+ }

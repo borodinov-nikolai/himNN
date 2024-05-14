@@ -12,7 +12,7 @@ import MobileFilters from '../components/mobileFilters'
 
 
 
-export const CategoryPage = async ({categoryName, searchParams}: {categoryName :string, searchParams: Record<string, string> }) => {
+export const CategoryPage = async ({categoryName, searchParams}: {categoryName:string, searchParams: Record<string, string> }) => {
   const category = await getCategory(categoryName)
   const filters = await getAllFilters()
   const {name} = category?.data[0]?.attributes || {}

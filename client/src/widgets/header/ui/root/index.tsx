@@ -6,6 +6,7 @@ import Button from '@/shared/ui/button'
 import Link from 'next/link'
 import { getAllCategories} from '@/entities/category'
 import Icons from '../components/icons'
+import { RequestACallBtn } from '@/features/recuestACallBtn'
 
 
 
@@ -47,7 +48,7 @@ export const Header = async () => {
             <li><Link href="/payment">Оплата</Link></li>
             <li><Link href="/about">О компании</Link></li>
             <li><Link href="/contacts">Контакты</Link></li>
-            <Button width='202px' height='43px' >Заказать звонок</Button>
+            <RequestACallBtn  >Заказать звонок</RequestACallBtn>
           </ul>
         </nav>
       </div>

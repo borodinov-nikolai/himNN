@@ -3,7 +3,7 @@ import React, { FC } from 'react'
 import styles from './AddToCartButton.module.scss'
 import Button from '@/shared/ui/button'
 import { IProduct } from '@/entities/product'
-import { useAppDispatch, useAppSelector } from '@/shared/hooks/redux'
+import { useAppDispatch} from '@/shared/hooks/redux'
 import { addCartItem } from '@/entities/cart'
 import { message } from 'antd'
 
@@ -16,7 +16,6 @@ interface IProps {
 export const AddToCartButton :FC<IProps> = ({product, count}) => {
   const dispatch = useAppDispatch()
   const [messageApi, contextHolder] =  message.useMessage()
-  const cart = useAppSelector((state)=> state.cart)
   const {id, attributes} = product?.data || {}
   const {name, price, priceUnits, image} = attributes || {}
   const imageUrl = image?.data?.attributes?.url
