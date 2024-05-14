@@ -813,6 +813,7 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
       'oneToMany',
       'api::product.product'
     >;
+    seo: Attribute.Component<'seo.metadata'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -908,7 +909,6 @@ export interface ApiProductProduct extends Schema.CollectionType {
     name: Attribute.String & Attribute.Required;
     price: Attribute.Decimal;
     image: Attribute.Media;
-    description: Attribute.Text;
     inStock: Attribute.Boolean;
     category: Attribute.Relation<
       'api::product.product',
@@ -925,6 +925,9 @@ export interface ApiProductProduct extends Schema.CollectionType {
       true
     >;
     priceUnits: Attribute.String;
+    documents: Attribute.Media;
+    seo: Attribute.Component<'seo.metadata'>;
+    description: Attribute.RichText;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -969,6 +972,7 @@ export interface ApiSubcategorySubcategory extends Schema.CollectionType {
     >;
     image: Attribute.Media;
     description: Attribute.RichText;
+    seo: Attribute.Component<'seo.metadata'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

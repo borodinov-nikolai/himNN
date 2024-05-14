@@ -1,11 +1,11 @@
 import { $serverApi } from "@/shared/configs/axios"
-import { IMetadata } from "../interfaces/metadata"
 
 
 
-export const getMetadata = async ()=> {
+
+export const getMetadata = async (url: string)=> {
      try {
-          const {data}:{data: IMetadata} = await $serverApi.get('/home-page?populate=*')
+          const {data}:{data: any} = await $serverApi.get(url)
           return data;
      } catch(e){
           console.error(e)

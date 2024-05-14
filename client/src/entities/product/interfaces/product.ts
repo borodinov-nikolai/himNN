@@ -30,5 +30,34 @@ export interface IProduct {
     subcategory: ISubcategory
     category: ICategory
     image: IImage
+    documents: Documents
     inStock: boolean
+  }
+
+  export interface Documents {
+    data?: Data2[]
+  }
+  
+  export interface Data2 {
+    id: number
+    attributes: Attributes2
+  }
+  
+  export interface Attributes2 {
+    name: string
+    alternativeText: any
+    caption: any
+    width: any
+    height: any
+    formats: any
+    hash: string
+    ext: string
+    mime: string
+    size: number
+    url: string
+    previewUrl: any
+    provider: string
+    provider_metadata: any
+    createdAt: string
+    updatedAt: string
   }

@@ -5,7 +5,9 @@ import React, { FC, useState } from 'react'
 import cs from 'classnames'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css';
-
+import Link from 'next/link'
+import { imageUrl } from '@/entities/image'
+import ReactMarkdown from "react-markdown";
 interface IProps {
   product?: IProduct
 }
@@ -37,11 +39,22 @@ const tabsList = [
 const ProductDescription: FC<IProps> = ({ product }) => {
   const [activeTab, setActiveTab] = useState<string>("Описание")
   const {inStock} = product?.data?.attributes || {}
+  const documents =  product?.data?.attributes?.documents?.data
+  const description = product?.data?.attributes?.description
   let tabContent;
-
+   console.log(documents)
   switch (activeTab) {
     case "Описание":
-      tabContent = <div>1</div>
+      tabContent = <div>
+
+        <div className={styles.description} ><ReactMarkdown>{description}</ReactMarkdown> </div>
+        {documents?.map(({id, attributes})=> 
+          {
+            const {url, name} = attributes || {}
+          return <Link className={styles.pdfLink} key={id} href={imageUrl + url}>{name}</Link>
+        }
+        )}
+      </div>
       break;
     case "Наличие":
       tabContent = <div className={styles.inStockHolder} >

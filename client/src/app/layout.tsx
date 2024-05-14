@@ -8,15 +8,14 @@ import { ConfigProvider } from "antd";
 import { Metadata } from "next";
 import { LoadCart } from "@/features/loadCart";
 import { LoadFavorites } from "@/features/loadFavorites";
+import { metadataGenerator } from "@/entities/metadata";
 
 const nunito_Sans = Nunito_Sans({subsets: ["latin"]});
 
 
 export const dynamic = 'force-dynamic'
 
-export const metadata: Metadata = {
-  title: 'Himnn'
-}
+export async function generateMetadata(): Promise<Metadata> { return await metadataGenerator({quantity: 'one', url: '/home-page?populate=*'}) }
 
 export default function RootLayout({
   children,

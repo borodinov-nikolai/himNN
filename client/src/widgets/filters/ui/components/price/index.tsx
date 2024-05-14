@@ -1,7 +1,7 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 import styles from './Price.module.scss'
-import { ConfigProvider, Slider } from 'antd'
+import { ConfigProvider, InputNumber, Slider } from 'antd'
 
 
 
@@ -9,7 +9,7 @@ import { ConfigProvider, Slider } from 'antd'
 
 const Price = ({onChange, maxPrice=0, resetPrice}:{onChange: (value:number[])=> void, maxPrice?: number, resetPrice?: boolean}) => {
     const [price, setPrice] = useState<number[]>([0, 0])
-    const [inputsValue, setInputsValue] = useState([0, 0])
+    const [inputsValue, setInputsValue] = useState<number[]>([0, 0])
 
    
 
@@ -77,9 +77,9 @@ const Price = ({onChange, maxPrice=0, resetPrice}:{onChange: (value:number[])=> 
         >
             <h3>Цена</h3>
           <div className={styles.priceInputs} >
-                <input onBlur={() => handleSetPrice('min')} onKeyPress={(e) => handleKeyPress(e, 'min')} value={inputsValue[0]} onChange={(e) => setInputsValue([+e.target.value, inputsValue[1]])} type="text" />
+                <InputNumber onBlur={() => handleSetPrice('min')} onKeyPress={(e) => handleKeyPress(e, 'min')} value={inputsValue[0]} onChange={(e) => e && setInputsValue([e, inputsValue[1]])} type="text" />
                 <span></span>
-                <input onBlur={() => handleSetPrice('max')} onKeyPress={(e) => handleKeyPress(e, 'max')} value={inputsValue[1]} onChange={(e) => setInputsValue([inputsValue[0], +e.target.value])} type="text" />
+                <InputNumber onBlur={() => handleSetPrice('max')} onKeyPress={(e) => handleKeyPress(e, 'max')} value={inputsValue[1]} onChange={(e) => e && setInputsValue([inputsValue[0], e])} type="text" />
             </div>
          <div className={styles.slider} >
                 <Slider value={price} step={100} onChange={(e) => setPrice(e)} min={0} max={maxPrice} tooltip={{ open: false }} range />
