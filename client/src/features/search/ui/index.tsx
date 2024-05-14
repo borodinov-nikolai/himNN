@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import styles from './Search.module.scss'
 import SearchIcon from '@/shared/icons/search'
 import CloseIcon from '@/shared/icons/close'
@@ -13,7 +13,7 @@ export const Search = () => {
   const [searchQuery, setSearchQuery] = useState<string>('')
   const [debouncedSearchQuery] = useDebounce(searchQuery, 500)
   const products = useSearcProductQuery(debouncedSearchQuery)
-
+  const inputRef = useRef<HTMLInputElement>(null)
 
 
   const handleOpen = ()=> {
@@ -28,13 +28,20 @@ export const Search = () => {
     setSearchQuery('')
   }
 
+  useEffect(()=> {
+      if(isOpen){
+
+        inputRef?.current?.focus()
+      }
+  }, [isOpen])
+
   return (
     <>
         <div onClick={handleOpen} className={styles.openBtn} ><SearchIcon/></div>
        {isOpen && <div className={cs(styles.content, 'modal_open')} >
          <div className={styles.contentHeader} >
           <div className={styles.searchInput} >
-            <input onChange={(e)=> setSearchQuery(e.target.value)} placeholder='Поиск' type="text" />
+            <input ref={inputRef} onChange={(e)=> setSearchQuery(e.target.value)} placeholder='Поиск' type="text" />
             <SearchIcon/>
           </div>
          </div>

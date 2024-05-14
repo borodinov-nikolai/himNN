@@ -106,7 +106,7 @@
      }
    img {
     margin: 0 auto;
-    width: 50%;
+    width: 100%;
     height: auto;
     align-self: center;
    }
@@ -126,5 +126,10 @@
 
     .tabContent {
         padding-top: 32px;
+    }
+    .description {
+        img {
+            width: 50%;
+        }
     }
 }

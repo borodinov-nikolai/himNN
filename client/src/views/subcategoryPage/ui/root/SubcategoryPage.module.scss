@@ -15,12 +15,14 @@
 }
 
 .description {
+    margin-top: 34px;
     display: flex;
     flex-direction: column;
     gap: 40px;  
     width: 100%;
     img {
-        width: 800px;
+        width: 100%;
+        height: auto;
     }
 }
 
@@ -51,6 +53,20 @@
     .mainWrapper {
         display: flex;
     }
+
+     .description {
+        display: flex;
+        flex-direction: column;
+        >p {
+            display: flex;
+            flex-direction: column;
+        }
+        img {
+            width: 50%;
+            height: auto;
+            align-self: center;
+        }
+     }
 
     .filters {
         display: block;

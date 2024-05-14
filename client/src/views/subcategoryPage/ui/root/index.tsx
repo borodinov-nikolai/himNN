@@ -35,13 +35,14 @@ export const SubcategoryPage: FC<IProps> = async ({params, searchParams}) => {
           <div className='container' >
     <Breadcrumb items={[{title: 'Каталог', href: '/catalog'}, {title: categoryName, href:`/catalog/${categoryHref}` }, {title: subcategoryName}]} />
     <div>
+    </div>
+    <h1 className={styles.title} >{subcategoryName}</h1>
      <div className={styles.description} >
        <ReactMarkdown
         remarkPlugins={[remarkGfm]}
-        >{description}</ReactMarkdown>
+        >{description}
+        </ReactMarkdown>
      </div>
-    </div>
-    <h1 className={styles.title} >{subcategoryName}</h1>
     <div className={styles.mainWrapper} >
       <div className={styles.filters} ><Filters products={products} allProducts={allProducts}  filters={filters} /></div>
       <div className={styles.content}>
