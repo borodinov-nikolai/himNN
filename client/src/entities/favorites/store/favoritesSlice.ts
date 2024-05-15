@@ -11,6 +11,7 @@ type Product = {
         name: string
         price: number
         priceUnits: string
+        inStock: boolean
 }
 
 interface IFavoritesState {

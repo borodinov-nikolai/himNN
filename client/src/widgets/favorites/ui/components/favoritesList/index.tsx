@@ -8,6 +8,7 @@ import { addCartItem, selectCart} from '@/entities/cart'
 import CloseIcon from '@/shared/icons/close'
 import { removeFavoritesItem, selectFavorites } from '@/entities/favorites'
 import Button from '@/shared/ui/button'
+import { RequestACallBtn } from '@/features/recuestACallBtn'
 
 
 const FavoritesList = () => {
@@ -35,19 +36,23 @@ const FavoritesList = () => {
           </tr>
         </thead>
         <tbody>
-          {products?.map(({id, image, name, price, priceUnits})=>
+          {products?.map(({id, image, name, price, priceUnits, inStock})=>
             <tr key={id} >
                <td><div className={styles.preview} ><div className={styles.imageHolder} >
                  {image && <Image src={imageUrl + image} width={200} height={200} alt='product image'/>}
                </div> <p>{name}</p> </div></td>
                <td><div><span>{price}</span> <span>{priceUnits}</span> </div></td>
                <td>
-               {!inCart?.includes(id) ? <div className={styles.toCartBtn} > 
+               {(!inCart?.includes(id) && inStock) && <div className={styles.toCartBtn} > 
               <Button onClick={()=> dispatch(addCartItem({id, name, price, priceUnits, image, count:1}))} >В корзину</Button>
-               </div> : 
-               <div className={styles.inCartBtn} >
+               </div>} 
+               {(inCart?.includes(id) && inStock) && <div className={styles.inCartBtn} >
                 <button>В корзине</button>
-               </div>
+               </div>}
+               {
+                !inStock && <div className={styles.requestACallBtn} >
+                  <RequestACallBtn>Под заказ</RequestACallBtn>
+                </div>
                }
                 </td>
                <td><div className={styles.remove} >  <button onClick={()=> dispatch(removeFavoritesItem({id}))} ><CloseIcon/></button> </div></td>

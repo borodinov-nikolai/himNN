@@ -20,7 +20,7 @@ export const AddToFavoritesButton: FC<IProps> = ({product, onChange}) => {
   const dispatch = useAppDispatch()
   const [active, setActive] = useState<boolean>(false)
   const {id, attributes} = product?.data || {}
-  const {name, price, priceUnits, image} = attributes || {}
+  const {name, price, priceUnits, image, inStock} = attributes || {}
   const imageUrl = image?.data?.attributes?.url
   const {products} = useAppSelector(selectFavorites)
  
@@ -30,7 +30,7 @@ export const AddToFavoritesButton: FC<IProps> = ({product, onChange}) => {
     e.stopPropagation()
     setActive(!active)
     if(!active) {
-      dispatch(addFavoritesItem({id, name, image: imageUrl, price, priceUnits}))
+      dispatch(addFavoritesItem({id, name, image: imageUrl, price, priceUnits, inStock}))
       messageApi.success('Товар добавлен в избранное')
     } else {
      dispatch(removeFavoritesItem({id}))
