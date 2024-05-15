@@ -814,6 +814,7 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
       'api::product.product'
     >;
     seo: Attribute.Component<'seo.metadata'>;
+    description: Attribute.RichText;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

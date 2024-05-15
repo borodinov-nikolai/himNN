@@ -10,7 +10,7 @@ export async function generateMetadata(): Promise<Metadata> { return await metad
 
 const page = ({params, searchParams}: {params:{category:string}, searchParams: Record<string, string>}) => {
    categoryHref = params.category
-   console.log(params.category)
+  
   return (
     <>
     <CategoryPage searchParams={searchParams} categoryName={params?.category} />

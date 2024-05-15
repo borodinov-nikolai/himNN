@@ -45,6 +45,9 @@
       "type": "component",
       "repeatable": false,
       "component": "seo.metadata"
+    },
+    "description": {
+      "type": "richtext"
     }
   }
 }

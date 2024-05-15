@@ -28,6 +28,7 @@ export interface ICategory {
     href: string
     image: IImage
     subcategories: ISubcategories
+    description: string
     products: IProducts
   }
 

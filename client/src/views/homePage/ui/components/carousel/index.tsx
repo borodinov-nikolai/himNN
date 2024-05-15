@@ -22,26 +22,26 @@ type Slide = {
 const slidesList: Slide[] = [
     {
         id: 1,
-        title: "Паронит ПОН-Б 3мм (1500х1700)",
+        title: "Паронит ПОН-Б",
         description: ['ГОСТ 481-80', 'В наличии'],
         image: "/images/carousel_1.jpg"
     },
     {
         id: 2,
-        title: "Паронит ПОН-Б 3мм (1500х1700)",
-        description: ['ГОСТ 481-80', 'В наличии'],
+        title: "Капролон стержневой",
+        description: ['В наличии'],
         image: "/images/carousel_2.jpg"
     },
     {
         id: 3,
-        title: "Паронит ПОН-Б 3мм (1500х1700)",
+        title: "Пластина МБС-С",
         description: ['ГОСТ 481-80', 'В наличии'],
         image: "/images/carousel_3.jpg"
     },
     {
         id: 4,
-        title: "Паронит ПОН-Б 3мм (1500х1700)",
-        description: ['ГОСТ 481-80', 'В наличии'],
+        title: "Фторопласт листовой",
+        description: ['В наличии'],
         image: "/images/carousel_4.jpg"
     },
 ]

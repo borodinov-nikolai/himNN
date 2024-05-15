@@ -26,9 +26,8 @@ export const Order = () => {
             <div className={styles.orderInfo_body} >
             <div className={styles.orderInfo_prices} >
               <div><span>Сумма: </span> <span>{totalPrice} руб.</span></div>
-              <div><span>Доставка: </span> <span>100 руб.</span></div>
             </div>
-            <div className={styles.orderInfo_total} ><span>Итого: </span> <span>{totalPrice + 100}  руб.</span></div>
+            <div className={styles.orderInfo_total} ><span>Итого: </span> <span>{totalPrice}  руб.</span></div>
             </div>
           </div>
           <div className={styles.orderList} ><OrderList/></div>
