@@ -44,7 +44,7 @@ const MobileMenu: FC<IProps> = ({ categories }) => {
 
 
 
-      <Drawer closeIcon={null} bodyStyle={{ background: 'rgba(245, 245, 245, 1)', padding: '0' }} headerStyle={{ height: '0px' }} placement='left' width={'100vw'} onClose={handleClose} open={open}>
+      <Drawer closeIcon={null} styles={{header: { height: '0px' }, body: { background: 'rgba(245, 245, 245, 1)', padding: '0' }}}  placement='left' width={'100vw'} onClose={handleClose} open={open}>
         <div className={cs('container', styles.content)} >
 
           <div className={styles.header} >

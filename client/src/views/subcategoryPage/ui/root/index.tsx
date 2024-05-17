@@ -10,6 +10,7 @@ import Breadcrumb from '@/shared/ui/breadcrumb'
 import MobileFilters from '../components/mobileFilters'
 import ReactMarkdown from "react-markdown";
 import remarkGfm from 'remark-gfm'
+import { Tables } from '@/widgets/tables'
 
 interface IProps {
   params: {category: string, subcategory: string} 
@@ -27,7 +28,7 @@ export const SubcategoryPage: FC<IProps> = async ({params, searchParams}) => {
     const {name: subcategoryName, description} = subcategory?.data[0]?.attributes || {}
     const products = await getAllProducts({params: {name: 'subcategory', value: params.subcategory}, searchParams})
     const allProducts = await getAllProducts()
-   
+    const tables = subcategory?.data[0]?.attributes?.tables     
 
   
   return (
@@ -43,6 +44,9 @@ export const SubcategoryPage: FC<IProps> = async ({params, searchParams}) => {
         >{description}
         </ReactMarkdown>
      </div>
+     {tables?.data && tables?.data?.length > 0 && <div className={styles.tables} >
+      <Tables tables={tables} />
+     </div>}
     <div className={styles.mainWrapper} >
       <div className={styles.filters} ><Filters products={products} allProducts={allProducts}  filters={filters} /></div>
       <div className={styles.content}>

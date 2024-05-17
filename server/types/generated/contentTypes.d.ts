@@ -929,6 +929,11 @@ export interface ApiProductProduct extends Schema.CollectionType {
     documents: Attribute.Media;
     seo: Attribute.Component<'seo.metadata'>;
     description: Attribute.RichText;
+    tables: Attribute.Relation<
+      'api::product.product',
+      'manyToMany',
+      'api::table.table'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -974,6 +979,11 @@ export interface ApiSubcategorySubcategory extends Schema.CollectionType {
     image: Attribute.Media;
     description: Attribute.RichText;
     seo: Attribute.Component<'seo.metadata'>;
+    tables: Attribute.Relation<
+      'api::subcategory.subcategory',
+      'manyToMany',
+      'api::table.table'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -985,6 +995,49 @@ export interface ApiSubcategorySubcategory extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::subcategory.subcategory',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiTableTable extends Schema.CollectionType {
+  collectionName: 'tables';
+  info: {
+    singularName: 'table';
+    pluralName: 'tables';
+    displayName: 'Table';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    headerRows: Attribute.Component<'table.table-row', true>;
+    products: Attribute.Relation<
+      'api::table.table',
+      'manyToMany',
+      'api::product.product'
+    >;
+    bodyRows: Attribute.Component<'table.table-row', true>;
+    subcategories: Attribute.Relation<
+      'api::table.table',
+      'manyToMany',
+      'api::subcategory.subcategory'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::table.table',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::table.table',
       'oneToOne',
       'admin::user'
     > &
@@ -1015,6 +1068,7 @@ declare module '@strapi/types' {
       'api::home-page.home-page': ApiHomePageHomePage;
       'api::product.product': ApiProductProduct;
       'api::subcategory.subcategory': ApiSubcategorySubcategory;
+      'api::table.table': ApiTableTable;
     }
   }
 }

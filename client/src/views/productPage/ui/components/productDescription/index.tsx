@@ -8,6 +8,8 @@ import 'swiper/css';
 import Link from 'next/link'
 import { imageUrl } from '@/entities/image'
 import ReactMarkdown from "react-markdown";
+import { table } from 'console'
+import { Tables } from '@/widgets/tables'
 interface IProps {
   product?: IProduct
 }
@@ -39,8 +41,9 @@ const tabsList = [
 const ProductDescription: FC<IProps> = ({ product }) => {
   const [activeTab, setActiveTab] = useState<string>("Описание")
   const {inStock} = product?.data?.attributes || {}
-  const documents =  product?.data?.attributes?.documents?.data
+  const documents = product?.data?.attributes?.documents?.data
   const description = product?.data?.attributes?.description
+  const tables = product?.data?.attributes?.tables
   let tabContent;
 
   switch (activeTab) {
@@ -48,6 +51,9 @@ const ProductDescription: FC<IProps> = ({ product }) => {
       tabContent = <div>
 
         <div className={styles.description} ><ReactMarkdown>{description}</ReactMarkdown> </div>
+        {tables?.data && tables?.data?.length > 0 && <div className={styles.tables} >
+           <Tables tables={tables} />
+            </div>}
         <div className={styles.documents} >
           {documents?.map(({id, attributes})=>
             {

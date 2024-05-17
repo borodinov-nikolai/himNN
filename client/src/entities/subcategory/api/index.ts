@@ -16,7 +16,7 @@ export const getAllSubcategories = async ()=> {
 
 export const getSubcategory = async (param: string)=> {
     try {
-        const {data}:{data: ISubcategories} = await $serverApi.get(`/subcategories?filters[href]=${param}&populate=*`)
+        const {data}:{data: ISubcategories} = await $serverApi.get(`/subcategories?filters[href]=${param}&populate[0]=tables.headerRows.tableCells&populate[1]=tables.bodyRows.tableCells`)
         return data;
     } catch(e) {
         console.error(e)

@@ -1,0 +1,1 @@
+export type {IDocument, IDocuments} from './interfaces/document'

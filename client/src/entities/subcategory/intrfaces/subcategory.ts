@@ -1,5 +1,6 @@
 import { IImage } from "@/entities/image"
 import { IMeta } from "@/entities/meta"
+import { ITables } from "@/entities/table"
 
 export interface ISubcategories {
     data: Data[]
@@ -21,6 +22,7 @@ export interface ISubcategories {
     href: string
     image: IImage
     description: string
+    tables: ITables
     createdAt: string
     updatedAt: string
     publishedAt: string

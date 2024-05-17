@@ -35,12 +35,38 @@ export interface SeoMetadata extends Schema.Component {
   };
 }
 
+export interface TableTableCell extends Schema.Component {
+  collectionName: 'components_table_table_cells';
+  info: {
+    displayName: 'tableCell';
+    description: '';
+  };
+  attributes: {
+    text: Attribute.Text;
+    rowSpan: Attribute.Integer;
+    colSpan: Attribute.Integer;
+  };
+}
+
+export interface TableTableRow extends Schema.Component {
+  collectionName: 'components_table_table_rows';
+  info: {
+    displayName: 'tableRow';
+    description: '';
+  };
+  attributes: {
+    tableCells: Attribute.Component<'table.table-cell', true>;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
       'characterisctics.characteristcic': CharacteriscticsCharacteristcic;
       'characterisctics.value': CharacteriscticsValue;
       'seo.metadata': SeoMetadata;
+      'table.table-cell': TableTableCell;
+      'table.table-row': TableTableRow;
     }
   }
 }

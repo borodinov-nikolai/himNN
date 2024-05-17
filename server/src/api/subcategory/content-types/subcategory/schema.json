@@ -48,6 +48,12 @@
       "type": "component",
       "repeatable": false,
       "component": "seo.metadata"
+    },
+    "tables": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::table.table",
+      "inversedBy": "subcategories"
     }
   }
 }

@@ -1,0 +1,1 @@
+export type {ITable, ITables} from './interfaces/table'

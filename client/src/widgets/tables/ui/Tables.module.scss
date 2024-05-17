@@ -1,0 +1,67 @@
+@import '../../../shared/styles/mixins/breakpoints';
+
+
+
+
+
+.root {
+    display: none;
+}
+
+.table {
+    width: 100%;
+    color: rgba(78, 78, 78, 1);
+    
+    thead {
+        background: rgba(0, 179, 2, 1);
+    }
+
+    th {
+        font-size: 14px;
+        padding: 10px;
+        font-weight: 700;
+         vertical-align: middle;
+         text-align: center;
+         color: white;
+         border: 1px solid rgba(0, 0, 0, 1);
+    }
+
+    td {
+        font-size: 14px;
+        border: 1px solid rgba(0, 0, 0, 1);
+        padding: 10px;
+        vertical-align: middle;
+        text-align: center;
+    }
+    tr {
+        width: 100%;
+    }
+
+  
+   
+}
+
+@include breakpoint(md) {
+    .root {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+
+}
+
+
+@include breakpoint(lg) {
+
+    .table {
+        th {
+            font-size: 16px;
+        }
+    
+        td {
+            font-size: 16px;
+        }
+    }
+
+}

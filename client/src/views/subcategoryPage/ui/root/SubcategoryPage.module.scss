@@ -28,6 +28,10 @@
     }
 }
 
+.tables {
+   margin-top: 20px;
+}
+
 .mainWrapper {
     display: block;
     gap: 24px;
@@ -51,14 +55,8 @@
     margin-top: 20px;
 }
 
-@include breakpoint(xl) {
-    .mainWrapper {
-        display: flex;
-    }
-
-     .description {
-        display: flex;
-        flex-direction: column;
+@include breakpoint(md) {
+    .description {
         >p {
             display: flex;
             flex-direction: column;
@@ -69,6 +67,14 @@
             align-self: center;
         }
      }
+}
+
+@include breakpoint(xl) {
+    .mainWrapper {
+        display: flex;
+    }
+
+     
 
     .filters {
         display: block;
