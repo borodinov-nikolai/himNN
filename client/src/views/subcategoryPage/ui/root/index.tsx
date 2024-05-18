@@ -38,7 +38,19 @@ export const SubcategoryPage: FC<IProps> = async ({params, searchParams}) => {
     <div>
     </div>
     <h1 className={styles.title} >{subcategoryName}</h1>
-     <div className={styles.description} >
+
+    
+    <div className={styles.mainWrapper} >
+      <div className={styles.filters} ><Filters products={products} allProducts={allProducts}  filters={filters} /></div>
+      <div className={styles.content}>
+        <MobileFilters products={products} allProducts={allProducts} filters={filters} />
+    
+        <div className={styles.products} >
+          <ProductsList products={products} />
+        </div>
+         </div>
+    </div>
+        <div className={styles.description} >
        <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         >{description}
@@ -47,15 +59,6 @@ export const SubcategoryPage: FC<IProps> = async ({params, searchParams}) => {
      {tables?.data && tables?.data?.length > 0 && <div className={styles.tables} >
       <Tables tables={tables} />
      </div>}
-    <div className={styles.mainWrapper} >
-      <div className={styles.filters} ><Filters products={products} allProducts={allProducts}  filters={filters} /></div>
-      <div className={styles.content}>
-        <MobileFilters products={products} allProducts={allProducts} filters={filters} />
-        <div className={styles.products} >
-          <ProductsList products={products} />
-        </div>
-         </div>
-    </div>
   </div>
   </main>
   )

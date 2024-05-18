@@ -75,6 +75,7 @@ export const Filters: FC<IProps> = ({ filters, allProducts, products, onConfirm 
       }
     })
     router.replace(`?${quertString}`)
+   
 
   }, [debouncedPrice, inStock, characteristics, price])
 
