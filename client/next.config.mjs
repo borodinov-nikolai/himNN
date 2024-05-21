@@ -16,7 +16,7 @@ const nextConfig = {
           },
           {
             protocol: 'https',
-            hostname: 'api.petproekt.ru',
+            hostname: 'api.xn----otbmfa7b.xn--p1ai',
             pathname: '/**',
           }
         

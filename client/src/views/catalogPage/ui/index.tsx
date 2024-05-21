@@ -19,7 +19,7 @@ export const CatalogPage = async () => {
               const {name, href, image} = attributes
               const imageHref = image?.data?.attributes?.url
             return (
-                <li className={styles.listItem} key={id} >
+                <li key={id} className={styles.listItem}  >
                   <Link href={`/catalog/${href}`} >
                     <div className={styles.imageHolder} >
                       {imageHref && <Image src={imageUrl + imageHref } width={280} height={280} alt='category image' />}

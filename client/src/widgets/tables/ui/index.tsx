@@ -32,7 +32,7 @@ export const Tables: FC<IProps> = ({tables}) => {
             {
                     bodyRows?.map(({id, tableCells})=> 
                       <tr key={id} >
-                        {tableCells.map(({id, text, rowSpan, colSpan})=> 
+                        {tableCells?.map(({id, text, rowSpan, colSpan})=> 
                         <td key={id} rowSpan={rowSpan} colSpan={colSpan} >{text}</td>
                         )}
                       </tr>

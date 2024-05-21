@@ -31,7 +31,7 @@ const [subcategories, setSubcategories] = useState<{id: number, name: string, hr
   return (
     <ul className={styles.root} >
         {subcategories?.map(({id, name, href, image})=> 
-        <li className={styles.listItem} onClick={()=> router.push(pathname + "/" + href)} key={id} >
+        <li  key={id} className={styles.listItem} onClick={()=> router.push(pathname + "/" + href)}  >
      
                 <div className={styles.imageHolder} >
                     {image && <Image src={imageUrl + image} width={300} height={300} alt="subcategory image" />}
